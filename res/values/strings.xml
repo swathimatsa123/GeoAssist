@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Geo Assist</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_camera">Camera</string>
+    <string name="action_compass">Compass</string>
+    <string name="action_map">Map</string>
+    <string name="action_notes">Notes</string>
+    <string name="action_mail">Mail</string>
+    <string name="action_save">Save</string>
+    <string name="title_activity_new_project">Project</string>
+    <string name="rockTypeTxt">Rock Type</string>
+    <string name="strcTypeTxt">Structure Type</string>
+
+    <string-array name="rockType_array">
+        <item>Select Type</item>
+        <item>Igneous </item>
+        <item>Metamorphic </item>
+        <item>Sedimentary </item>
+    </string-array>
+    <string-array name="strcType_array">
+        <item>Select Type</item>
+        <item>Fault</item>
+        <item>Fold</item>
+        <item>Joint</item>
+        <item>Contact</item>
+    </string-array>
+    <string-array name="grainForm_array">
+        <item>Select Type</item>
+        <item>Anhedral </item>
+        <item>Subhedral </item>
+        <item>Suhedral</item>
+    </string-array>
+    <string-array name="grainShape_array">
+        <item>Select Type</item>
+        <item>Equant </item>
+        <item>Interstitial </item>
+        <item>Irregular </item>
+        <item>Platy</item>
+        <item>Prismatic</item>
+        <item>Tabular</item>
+        <item>Acicular</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="grainPrimary_array">
+        <item>Select Type</item>
+        <item>Essential</item>
+        <item>Varietal</item>
+        <item>Accessory</item>
+    </string-array>
+    <string-array name="grainSecondary_array">
+        <item>Select Type</item>
+        <item>Deuteric alteration</item>
+        <item>Chemical weathering</item>
+    </string-array>
+
+    <string name="title_activity_get_details">GetDetailsActivity</string>
+    <string name="grainSizeTxt">Grain Size</string>
+    <string name="compTitleTxt">Composition %</string>
+    <string name="colorTitleTxt">Color </string>
+    <string name="grainFormTitleTxt">Grain Form</string>
+    <string name="grainShapeTitleTxt">Grain Shape</string>
+    <string name="grainPrimaryTitleTxt">Primary</string>
+    <string name="grainSecondaryTitleTxt">Secondary</string>
+    <string name="title_activity_user_details">UserDetails</string>
+    <string name="usrNameTv">Scientist Name :</string>
+    <string name="prjNameTv">Project Name :</string>
+    <string name="lcnTv">Location     :</string>
+    <string name="title_activity_find_location"> Find Location</string>
+    <string name="title_activity_sample_details_one">Details </string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_collect_details_one">Details </string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="contact">Contact</string>
+    <string name="title_activity_igneous_mineral">Igneous Mineral</string>
+    <string name="mineralName">Mineral Name :</string>
+    <string name="grainSize">Grain Size :</string>
+    <string name="minGrainSize">Min Grain Size :</string>
+    <string name="maxGrainSize">Max Grain Size :</string>
+    <string name="composition">Composition :</string>
+    <string name="cleavege">Cleavege :</string>
+    <string name="addMinerals">Add Minerals</string>
+    <string name="rockNameTxt">Rock  :</string>
+    <string name="ignRockNameTxt">Rock  Name :</string>
+    <string name="strikeTxt">Strike :</string>
+    <string name="dipTxt">   Dip    :</string>
+    <string name="title_activity_igneous_rock_info">Rock Info</string>
+    <string name="title_activity_igneous_rock_details">Rock Details</string>
+    <string name="attitude">Attitude</string>
+    <string name="title_activity_gis_map">GIS Map</string>
+    <string name="title_activity_grain_details">Grain Details</string>
+    <string name="title_activity_sediment_structures">Sediment Structures</string>
+    <string name="title_activity_notes">Notes </string>
+    <string name="sedStructures">Sediment Structures</string>
+    <string name="notes">Notes</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="nameEt">User Name</string>
+    <string name="mailEt">E-mail To</string>
+    <string name="emailTV">E-mail To</string>
+    <string name="emailCcTv">E-mail CC to</string>
+    <string name="done">Done </string>
+</resources>

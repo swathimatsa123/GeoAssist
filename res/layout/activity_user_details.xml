@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".UserDetails" >
+    
+    <EditText
+        android:id="@+id/lcnEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lcnTv"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/lcnTv"
+        android:inputType="text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageButton
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/lcnEt"
+        android:src="@drawable/ic_next" />
+
+    <TextView
+        android:id="@+id/lcnTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/prjNameTv"
+        android:layout_below="@+id/prjNameTv"
+        android:layout_marginTop="34dp"
+        android:gravity="center_horizontal"
+        android:text="@string/lcnTv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/usrNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/prjNameTv"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/usrNameTv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/prjNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/usrNameTv"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:text="@string/prjNameTv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/userNameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/usrNameTv"
+        android:layout_toRightOf="@+id/usrNameTv"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/projNameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/prjNameTv"
+        android:layout_alignRight="@+id/lcnEt"
+        android:layout_toRightOf="@+id/usrNameTv"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

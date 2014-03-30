@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.geoassist"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <permission
+        android:name="com.codepath.adhoc.locationapi.maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAe9Dsh-SaI3xG4YrciUYCwEeMXjX9mMqI" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.geoassist.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geoassist.NewProjectActivity"
+            android:label="@string/title_activity_new_project" >
+        </activity>
+        <activity
+            android:name="com.geoassist.GetDetailsActivity"
+            android:label="@string/title_activity_get_details" >
+        </activity>
+        <activity
+            android:name="com.geoassist.UserDetails"
+            android:label="@string/title_activity_user_details" >
+        </activity>
+        <activity
+            android:name="com.geoassist.LocationFindActivity"
+            android:label="@string/title_activity_find_location" >
+        </activity>
+        <activity
+            android:name="com.geoassist.SampleDetailsOne"
+            android:label="@string/title_activity_sample_details_one" >
+        </activity>
+        <activity
+            android:name="com.geoassist.CollectDetailsOne"
+            android:label="@string/title_activity_collect_details_one" >
+        </activity>
+        <activity
+            android:name="com.geoassist.IgneousMineral"
+            android:label="@string/title_activity_igneous_mineral" >
+        </activity>
+        <activity
+            android:name="com.geoassist.IgneousRockInfo"
+            android:label="@string/title_activity_igneous_rock_info" >
+        </activity>
+        <activity
+            android:name="com.geoassist.IgneousRockDetails"
+            android:label="@string/title_activity_igneous_rock_details" >
+        </activity>
+        <activity
+            android:name="com.geoassist.GisMap"
+            android:label="@string/title_activity_gis_map" >
+        </activity>
+        <activity
+            android:name="com.geoassist.GrainDetails"
+            android:label="@string/title_activity_grain_details" >
+        </activity>
+        <activity
+            android:name="com.geoassist.SedimentStrucutres"
+            android:label="@string/title_activity_sediment_structures" >
+        </activity>
+        <activity
+            android:name="com.geoassist.NotesActivity"
+            android:label="@string/title_activity_notes" >
+        </activity>
+        <activity
+            android:name="com.geoassist.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+    </application>
+
+</manifest>
