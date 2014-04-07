@@ -57,13 +57,16 @@
 
     <string name="title_activity_get_details">GetDetailsActivity</string>
     <string name="grainSizeTxt">Grain Size</string>
+    <string name="grainSizeMinTxt">Min Grain Size</string>
+    <string name="grainSizeMaxTxt">Max Grain Size</string>
+    <string name="descriptionTxt">Descriprion</string>
     <string name="compTitleTxt">Composition %</string>
     <string name="colorTitleTxt">Color </string>
     <string name="grainFormTitleTxt">Grain Form</string>
     <string name="grainShapeTitleTxt">Grain Shape</string>
     <string name="grainPrimaryTitleTxt">Primary</string>
     <string name="grainSecondaryTitleTxt">Secondary</string>
-    <string name="title_activity_user_details">UserDetails</string>
+    <string name="title_activity_user_details">New Project</string>
     <string name="usrNameTv">Scientist Name :</string>
     <string name="prjNameTv">Project Name :</string>
     <string name="lcnTv">Location     :</string>
@@ -102,4 +105,11 @@
     <string name="emailTV">E-mail To</string>
     <string name="emailCcTv">E-mail CC to</string>
     <string name="done">Done </string>
+    <string name="addDetails"> Details</string>
+    <string name="addNotes"> Add notes below</string>
+    <string name="thicknessTxt">Thickness</string>
+    <string name="mapFile">Map File</string>
+    <string name="action_done">Done</string>
+    <string name="action_cancel">Cancel</string>
+    
 </resources>

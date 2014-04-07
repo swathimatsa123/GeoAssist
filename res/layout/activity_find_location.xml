@@ -11,5 +11,4 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         class="com.google.android.gms.maps.SupportMapFragment" />
-
 </RelativeLayout>

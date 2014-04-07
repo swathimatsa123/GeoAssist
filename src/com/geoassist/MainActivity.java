@@ -35,7 +35,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		if (usrName.equals("")) {
 			startSettings();
 		}
-		Log.e("UserName", usrName);
 	}
 	
 	@Override

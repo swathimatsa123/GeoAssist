@@ -19,25 +19,6 @@
         android:text="@string/nameEt" 
         style="@android:style/TextAppearance.Large"/>
 
-    <TextView
-        android:id="@+id/toAddrTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameTV"
-        android:layout_below="@+id/nameTV"
-        android:layout_marginTop="44dp"
-        style="@android:style/TextAppearance.Large"
-        android:text="@string/emailTV" />
-
-    <TextView
-        android:id="@+id/ccAddrTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/toAddrTv"
-        android:layout_centerVertical="true"
-        style="@android:style/TextAppearance.Large"
-        android:text="@string/emailCcTv" />
-
     <EditText
         android:id="@+id/settingUsrNameEt"
         android:layout_width="wrap_content"
@@ -68,6 +49,26 @@
         android:layout_toRightOf="@+id/ccAddrTv"
         android:ems="10"
         android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/ccAddrTv"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toAddrTv"
+        android:layout_below="@+id/toAddrTv"
+        android:layout_marginTop="16dp"
+        android:text="@string/emailCcTv" />
+
+    <TextView
+        android:id="@+id/toAddrTv"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameTV"
+        android:layout_below="@+id/settingUsrNameEt"
+        android:layout_marginTop="27dp"
+        android:text="@string/emailTV" />
     
 </RelativeLayout>
     

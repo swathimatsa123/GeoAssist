@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<EditText
+	    android:id="@+id/strikeEt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/strikeTv"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:ems="10" >
+	</EditText>
+
+	<TextView
+	    android:id="@+id/dipTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/strikeTv"
+	    android:layout_marginTop="21dp"
+	    android:text="@string/dipTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	<EditText
+	    android:id="@+id/dipEt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/dipTv"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:ems="10" >
+	</EditText>
+	
+	<TextView
+	    android:id="@+id/thicknessTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/dipTv"
+	    android:layout_marginTop="21dp"
+	    android:text="@string/thicknessTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	<EditText
+	    android:id="@+id/thicknessEt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/thicknessTv"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:ems="10" >
+	</EditText>
+	
+	<TextView
+	    android:id="@+id/grainSizeMinTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/thicknessTv"
+	    android:layout_marginTop="21dp"
+	    android:text="@string/grainSizeMinTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+
+	<TextView
+	    android:id="@+id/grainSizeMaxTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/grainSizeMinTv"
+	    android:layout_marginTop="21dp"
+	    android:text="@string/grainSizeMaxTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	<EditText
+	    android:id="@+id/grainSizeMax"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/grainSizeMaxTv"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:layout_toRightOf="@+id/grainSizeMinTv"
+	    android:ems="10"
+	    android:inputType="number" >
+
+	</EditText>
+
+	<TextView
+	    android:id="@+id/strikeTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginTop="22dp"
+	    android:text="@string/strikeTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+	
+	<TextView
+	    android:id="@+id/descriptionTv"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/grainSizeMaxTv"
+	    android:layout_marginTop="21dp"
+	    android:text="@string/descriptionTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	<EditText
+	    android:id="@+id/descriptionEt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/descriptionTv"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:layout_toRightOf="@+id/grainSizeMinTv"
+	    android:ems="10" >
+
+	</EditText>
+
+	<ImageButton
+	    android:id="@+id/doneBtn"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/descriptionEt"
+	    android:layout_marginTop="15dp"
+	    android:src="@drawable/ic_done" />
+
+	<EditText
+	    android:id="@+id/grainSizeMin"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/grainSizeMinTv"
+	    android:layout_alignParentRight="true"
+	    android:ems="10"
+	    android:inputType="number" />
+	
+</RelativeLayout>

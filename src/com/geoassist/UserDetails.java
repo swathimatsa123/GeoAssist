@@ -1,56 +1,81 @@
 package com.geoassist;
-import com.geoassist.R;
-import com.geoassist.data.Project;
+import java.io.File;
+import java.util.ArrayList;
 
-import android.os.Bundle;
+import android.app.ExpandableListActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class UserDetails extends BaseActivity implements OnClickListener{
+import com.geoassist.data.Project;
+import com.geoassist.data.WorkingProject;
 
-	EditText etLocation = null;
-	EditText etUsrName  = null;
-	EditText etProjName  = null;
-
+public class UserDetails extends BaseListActivity implements OnClickListener{
+	Project 	currProject;
 	boolean clickedLocBtn = false;
 	ImageButton nextBtn;
 	static final int LOCATION_ACTIVITY = 100;
 	static final int START_GATHER_DETAILS = 100;
+	static final int ROCK_INFO_ACTIVITY   = 200;
+	private ExpListAdapter expListAdapter = null;
+	private ExpandableListView exList  = null;
+	ArrayList<String> groupItem = new ArrayList<String>();
+	ArrayList<Object> childItem = new ArrayList<Object>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_user_details);
-		etLocation = (EditText) findViewById(R.id.lcnEt);
-		etUsrName  = (EditText) findViewById(R.id.userNameEt);
-		etProjName = (EditText) findViewById(R.id.projNameEt);
+//		setContentView(R.layout.activity_user_details);
+//
+//		setContentView(R.layout.info_group);
 		currProject =  (Project) getIntent().getSerializableExtra("Project");
+		exList = getExpandableListView();
+		exList.setDividerHeight(2);
+		exList.setGroupIndicator(null);
+		exList.setClickable(true);
+		groupItem.add("Project Information");
+		groupItem.add("Rock");
+		groupItem.add("Minerals ");
+		groupItem.add("Contact");        
+		
+		ArrayList<String> child = new ArrayList<String>();
+		child = new ArrayList<String>();
+		child.add("Dummy");
+		childItem.add(child);
 
-		Log.e("Project " , String.valueOf(currProject));
-		nextBtn = (ImageButton) findViewById(R.id.nextBtn);
-		nextBtn .setOnClickListener(this);
+		child = new ArrayList<String>();
+		child.add("Dummy");
+		childItem.add(child);
+
+		child = new ArrayList<String>();
+		child.add("Dummy");
+		childItem.add(child);
+
+		child = new ArrayList<String>();
+		child.add("Dummy");
+		childItem.add(child);
+
+		expListAdapter = new ExpListAdapter(groupItem, childItem);
+		expListAdapter.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),this);
+		exList.setAdapter(expListAdapter);
+		exList.setOnChildClickListener(this);
+		exList.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
+		exList.setBackgroundColor(Color.WHITE);
+//		ImageButton doneBtn =  (ImageButton) findViewById(R.id.viewDoneBtn);
+//		doneBtn.setOnClickListener(this);
 	}
 
-	public void setupLocationTouchListener() {
-		etLocation.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if(!clickedLocBtn) {
-					clickedLocBtn = true;
-//					Intent i = new Intent(UserDetails.this, LocationFindActivity.class);
-					Intent i = new Intent(UserDetails.this, GisMap.class);
-					startActivityForResult(i, LOCATION_ACTIVITY);
-				}
-				return false;
-			}
-		});
-	}
 
 	public void startNextActivity() {
 		Intent intnt = new Intent(this, SampleDetailsOne.class);
@@ -59,24 +84,50 @@ public class UserDetails extends BaseActivity implements OnClickListener{
 		return;
 	}
 	
+	public void startRockInfoActivity () {
+		Intent intnt = new Intent(this, RockDetails.class);
+		startActivityForResult(intnt, ROCK_INFO_ACTIVITY);
+		return;
+	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.nextBtn:
 				// Collect the details that user has entered.
-				collectDetails();
+				collectDetails(0);
 				startNextActivity();
 				break;
 		}
 	}
 	
-	public void collectDetails() {
+	public void collectDetails(int groupPosition) {
 		Log.e(" CurrProject", String.valueOf(currProject));
-		currProject.scientistName = etUsrName.getText().toString();  
-		currProject.name		  = etProjName.getText().toString();
-		currProject.location	  = etLocation.getText().toString();  
-		Log.e("USER Details" , "USR  Name : " + currProject.scientistName +
-							   "Proj Name : " + currProject.name +
-							   "Location  : " + currProject.location);
+		WorkingProject proj = WorkingProject.getInstance();
+		switch (groupPosition) {
+			case 0:
+				EditText etProjName = (EditText) findViewById(R.id.projNameEt);
+				EditText etProjLcn  = (EditText) findViewById(R.id.lcnEt);
+				if (etProjName != null) {
+					Log.e("Proj Details" , etProjName.getText().toString());
+					proj.name = etProjName.getText().toString();
+					proj.location = etProjLcn.getText().toString();
+				}
+				break;
+			case 1:
+				break;
+		}
+		exList.collapseGroup(groupPosition);
+        TextView textView=(TextView) exList.getChildAt(groupPosition).findViewById(R.id.groupId);
+        Log.e("TExtView", String.valueOf(textView));
+        if (textView != null) {
+            textView.setTextColor(0xFF00CC00);
+        }
+	}
+	@Override
+	public boolean onChildClick(ExpandableListView parent, View v,
+			int groupPosition, int childPosition, long id) {
+		Log.e("Activity", "OnChildClick");
+		Toast.makeText(this, "Clicked On Child", Toast.LENGTH_SHORT).show();
+		return true;
 	}
 }

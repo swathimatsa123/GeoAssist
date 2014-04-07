@@ -2,7 +2,6 @@ package com.geoassist;
 
 import android.content.Intent;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -10,10 +9,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.geoassist.R;
+import com.geoassist.data.WorkingProject;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.TileOverlayOptions;
 
 public class LocationFindActivity extends FragmentActivity  implements GooglePlayServicesClient.ConnectionCallbacks,
 																   GooglePlayServicesClient.OnConnectionFailedListener,
@@ -60,10 +62,10 @@ public class LocationFindActivity extends FragmentActivity  implements GooglePla
 		else{
 			Toast.makeText(this, "Google Play Service Error " + resp, Toast.LENGTH_LONG).show();
 		}				
-//		 mLocationRequest = LocationRequest.create();
-//	     mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-//	     mLocationRequest.setInterval(UPDATE_INTERVAL_IN_SECONDS);
-//	     mLocationRequest.setFastestInterval(UPDATE_INTERVAL_IN_SECONDS);	
+		 mLocationRequest = LocationRequest.create();
+	     mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+	     mLocationRequest.setInterval(UPDATE_INTERVAL_IN_SECONDS);
+	     mLocationRequest.setFastestInterval(UPDATE_INTERVAL_IN_SECONDS);	
 	}
 
     //public void sendDetailsBack(LatLng pos) {
@@ -91,34 +93,39 @@ public class LocationFindActivity extends FragmentActivity  implements GooglePla
 
 	@Override
 	public void onLocationChanged(Location location) {
-//	    currentLat = location.getLatitude();
-//	    currentLng = location.getLongitude();
-//		
-//		//myPos      = new LatLng(currentLat,currentLng);
-//		setMarkerCurrentUserLocation();
-//		if (map == null) {
-//			Log.d("DEBUG", "Map creation is null");
-//
-//			SupportMapFragment supportMap = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
-//			map = supportMap.getMap();
-//
-//			if (map != null) {
-//					//user marker stuff
-//			    	map.setOnMapClickListener(this);
-//			    	map.setOnMarkerClickListener(this);
-//			    	myPosMarker = map.addMarker(new MarkerOptions()
-//			    									.position(myPos)
-//			    									.draggable(false)
-//			    									.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker)));
-//			        map.setOnMarkerDragListener(this);
-//			    	map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
-//			}
-//		}
-//		else {
-//			Log.d("DEBUG", "Map creation is not null");
-//			myPosMarker.setPosition(myPos);
-//		}
-//		mapUpdateRcvd = true;
+	    currentLat = location.getLatitude();
+	    currentLng = location.getLongitude();
+		
+		//myPos      = new LatLng(currentLat,currentLng);
+		setMarkerCurrentUserLocation();
+		if (map == null) {
+			Log.d("DEBUG", "Map creation is null");
+
+			SupportMapFragment supportMap = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+			map = supportMap.getMap();
+
+			if (map != null) {
+					//user marker stuff
+					WorkingProject proj = WorkingProject.getInstance();
+					map.setMapType(GoogleMap.MAP_TYPE_NONE);
+					map.addTileOverlay(new TileOverlayOptions().tileProvider(new MBTileAdapter(proj.mapFile)));
+
+
+					map.setOnMapClickListener(this);
+			    	map.setOnMarkerClickListener(this);
+			    	myPosMarker = map.addMarker(new MarkerOptions()
+			    									.position(myPos)
+			    									.draggable(false)
+			    									.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker)));
+			        map.setOnMarkerDragListener(this);
+			    	map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
+			}
+		}
+		else {
+			Log.d("DEBUG", "Map creation is not null");
+			myPosMarker.setPosition(myPos);
+		}
+		mapUpdateRcvd = true;
 	}
 
 	@Override
@@ -132,7 +139,8 @@ public class LocationFindActivity extends FragmentActivity  implements GooglePla
 	
 	@Override
 	public void onConnected(Bundle connectionHint) {
-        locationclient.requestLocationUpdates(mLocationRequest, (com.google.android.gms.location.LocationListener) this);
+        locationclient.requestLocationUpdates(mLocationRequest, 
+        		(com.google.android.gms.location.LocationListener) this);
 	}
 
 	@Override
@@ -193,19 +201,16 @@ public class LocationFindActivity extends FragmentActivity  implements GooglePla
 		chosenByDrag = false;
 	}
 
-	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
 		

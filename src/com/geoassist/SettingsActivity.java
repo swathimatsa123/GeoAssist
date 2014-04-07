@@ -22,6 +22,12 @@ public class SettingsActivity extends Activity {
 		emailToEt = (EditText) findViewById(R.id.emailToEt);
 		emailCcEt = (EditText) findViewById(R.id.emailccEt);
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String usrName  = preferences.getString("username", "");
+		usrNameEt.setText(usrName);
+		String emailTo  = preferences.getString("emailTo", "");
+		emailToEt.setText(emailTo);
+		String emailCc  = preferences.getString("emailCc", "");
+		emailCcEt.setText(emailCc);
 	}
 
 	@Override

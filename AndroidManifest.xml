@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -36,7 +37,8 @@
 
         <activity
             android:name="com.geoassist.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,59 +47,75 @@
         </activity>
         <activity
             android:name="com.geoassist.NewProjectActivity"
-            android:label="@string/title_activity_new_project" >
+            android:label="@string/title_activity_new_project" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.GetDetailsActivity"
-            android:label="@string/title_activity_get_details" >
+            android:label="@string/title_activity_get_details" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.UserDetails"
-            android:label="@string/title_activity_user_details" >
+            android:label="@string/title_activity_user_details"
+            android:windowSoftInputMode="adjustPan" 
+            android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name="com.geoassist.LocationFindActivity"
-            android:label="@string/title_activity_find_location" >
+            android:label="@string/title_activity_find_location" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.SampleDetailsOne"
-            android:label="@string/title_activity_sample_details_one" >
+            android:label="@string/title_activity_sample_details_one"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.geoassist.CollectDetailsOne"
-            android:label="@string/title_activity_collect_details_one" >
+            android:label="@string/title_activity_collect_details_one" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.IgneousMineral"
-            android:label="@string/title_activity_igneous_mineral" >
+            android:label="@string/title_activity_igneous_mineral" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.IgneousRockInfo"
-            android:label="@string/title_activity_igneous_rock_info" >
+            android:label="@string/title_activity_igneous_rock_info"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.geoassist.IgneousRockDetails"
-            android:label="@string/title_activity_igneous_rock_details" >
+            android:name="com.geoassist.RockDetails"
+            android:label="@string/title_activity_igneous_rock_details" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.GisMap"
-            android:label="@string/title_activity_gis_map" >
+            android:label="@string/title_activity_gis_map" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.GrainDetails"
-            android:label="@string/title_activity_grain_details" >
+            android:label="@string/title_activity_grain_details"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.geoassist.SedimentStrucutres"
-            android:label="@string/title_activity_sediment_structures" >
+            android:label="@string/title_activity_sediment_structures" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.NotesActivity"
-            android:label="@string/title_activity_notes" >
+            android:label="@string/title_activity_notes" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.geoassist.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

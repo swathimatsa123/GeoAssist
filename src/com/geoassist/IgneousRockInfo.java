@@ -58,7 +58,7 @@ public class IgneousRockInfo extends BaseActivity implements OnClickListener, On
 	}
 
 	public void startNextActivity(String  type) {
-		Intent intnt = new Intent(this, IgneousRockDetails.class);
+		Intent intnt = new Intent(this, RockDetails.class);
 		intnt.putExtra("Type", type);
 		Log.e("Intent ", "Started");
 		startActivityForResult(intnt, START_ROCK_DETAILS);

@@ -28,7 +28,7 @@ public class BaseActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.simple_menu, menu);
 		return true;
 	}
 
@@ -38,15 +38,15 @@ public class BaseActivity extends Activity {
 	    switch (item.getItemId()) {
 		    case R.id.ic_map:
 		    	Log.e("OPTION MAP" , "Selected");
-		    	startMap();
+//		    	startMap();
 		    	break;
-		    case R.id.ic_notes:
-		    	Log.e("OPTION Notes" , "Selected");
-		    	break;
+//		    case R.id.ic_notes:
+//		    	Log.e("OPTION Notes" , "Selected");
+//		    	break;
 		    	
 		    case R.id.ic_email:
 		    	Log.e("OPTION Email" , "Selected");
-		    	saveProject(currProject);
+//		    	saveProject(currProject);
 		    	break;
 
 		    case R.id.ic_save:
