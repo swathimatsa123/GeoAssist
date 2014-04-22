@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	public void startNewProject() {
-		Intent intnt = new Intent(this, UserDetails.class);
+		Intent intnt = new Intent(this, MainMap.class);
 		Log.e("Intent ", "Started");
 		currProject = new Project();
 		Log.e("## In  New", String.valueOf(currProject));

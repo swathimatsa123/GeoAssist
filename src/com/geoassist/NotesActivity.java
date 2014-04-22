@@ -13,7 +13,7 @@ public class NotesActivity extends BaseActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_notes);
-		nextBtn = (ImageButton) findViewById(R.id.nextBtn);
+		nextBtn = (ImageButton) findViewById(R.id.mineralDone);
 		nextBtn .setOnClickListener(this);
 	}
 
@@ -21,7 +21,7 @@ public class NotesActivity extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.nextBtn:
+			case R.id.mineralDone:
 				// Collect the details that user has entered.
 				collectDetails();
 				break;

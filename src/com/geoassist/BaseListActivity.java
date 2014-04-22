@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.content.Intent;
@@ -13,14 +14,16 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.geoassist.data.ProjectReport;
 import com.geoassist.data.WorkingProject;
 
-public class BaseListActivity extends ExpandableListActivity {
+public class BaseListActivity extends ExpandableListActivity implements OnClickListener{
 	static final int START_MAP_ACTIVITY= 200;
 	static final int START_SETTINGS_ACTIVITY = 300;
 	static final int START_CAMERA_ACTIVITY = 400;
@@ -31,48 +34,51 @@ public class BaseListActivity extends ExpandableListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		workingProj =  (WorkingProject) getIntent().getSerializableExtra("Project");
+	    ActionBar actionBar = getActionBar();
+	    actionBar.setCustomView(R.layout.sample_menu);
+	    actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+	    
+	    ImageButton doneBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.done);
+	    doneBtn.setOnClickListener(this);
+	    ImageButton cancelBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.cancel);
+	    cancelBtn.setOnClickListener(this);
+	    ImageButton cameraBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.camera);
+	    cameraBtn.setOnClickListener(this);
+	    ImageButton compassBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.compass);
+	    compassBtn.setOnClickListener(this);
+	    ImageButton notesBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.perSampleNotes);
+	    notesBtn.setOnClickListener(this);
+	    ImageButton settingsBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.settings);
+	    settingsBtn.setOnClickListener(this);
+	    
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean retVal = true;
 	    switch (item.getItemId()) {
-		    case R.id.ic_map:
-		    	Log.e("OPTION MAP" , "Selected");
-		    	startMap();
+		    case R.id.perSampleNotes:
+		    	Log.e("OPTION Notes" , "Selected");
 		    	break;
-//		    case R.id.ic_notes:
-//		    	Log.e("OPTION Notes" , "Selected");
-//		    	break;
-//		    	
-		    case R.id.ic_email:
-		    	Log.e("OPTION Email" , "Selected");
-		    	saveProject(workingProj);
+
+		    case R.id.compass:
+		    	Log.e("OPTION Compass" , "Selected");
 		    	break;
-		    case R.id.ic_camera:
+		    
+		    case R.id.camera:
 		    	invokeCamera();
 		    	break;
-		    case R.id.ic_done:
-		    	Log.e("OPTION Email" , "Selected");
-//		    	saveProject(workingProj);
-		    	this.finish();
-		    	break;
-		    case R.id.ic_cancel:
+
+		    case R.id.cancel:
 		    	Log.e("OPTION Cancel" , "Selected");
 		    	this.finish();
 		    	break;
-		    case R.id.ic_save:
+		    case R.id.done:
 		    	Log.e("OPTION Save" , "Selected");
+		    	this.finish();
 		    	break;
-		    case R.id.ic_action_settings:
+		    case R.id.settings:
 		    	Log.e("OPTION Settings" , "Selected");
 		    	startSettings();
 		    	break;
@@ -82,14 +88,6 @@ public class BaseListActivity extends ExpandableListActivity {
 		      break;
 	    }
 	    return retVal;
-	}
-
-	public void startMap( ){
-		Intent intnt = new Intent(this, LocationFindActivity.class);
-		Log.e("Intent ", "Started");
-		startActivityForResult(intnt, START_MAP_ACTIVITY);
-		overridePendingTransition(R.anim.right_in, R.anim.left_out);
-		return;
 	}
 
 	public void startSettings( ){
@@ -182,6 +180,41 @@ public class BaseListActivity extends ExpandableListActivity {
 		    mediaFile = new File(mediaStorageDir.getPath() + File.separator +"geoAssist_"+ timeStamp + ".jpg");
 //		    Log.e("FileName" , "Return File:" + mediaStorageDir.getPath()+ File.separator  + "geoAssist_" + timeStamp + ".jpg");
 		    return mediaFile;
+	}
+
+
+	@Override
+	public void onClick(View v) {
+		Log.e("OnClick ", "Recognized");
+	    switch (v.getId()) {
+		    case R.id.perSampleNotes:
+		    	Log.e("OPTION Notes" , "Selected");
+		    	break;
+	
+		    case R.id.compass:
+		    	Log.e("OPTION Compass" , "Selected");
+		    	break;
+		    
+		    case R.id.camera:
+		    	invokeCamera();
+		    	break;
+	
+		    case R.id.cancel:
+		    	Log.e("OPTION Cancel" , "Selected");
+		    	this.finish();
+		    	break;
+		    case R.id.done:
+		    	Log.e("OPTION Save" , "Selected");
+		    	this.finish();
+		    	break;
+		    case R.id.settings:
+		    	Log.e("OPTION Settings" , "Selected");
+		    	startSettings();
+		    	break;
+		    default:
+		      break;
+	    }
+	    return ;
 	}
 
 }

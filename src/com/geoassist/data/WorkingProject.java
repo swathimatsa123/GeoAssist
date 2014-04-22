@@ -12,9 +12,10 @@ public class WorkingProject {
 	public 	int 			rockType;
 	public  int             rockName;
 	public 	StructureType	structType;
-	public ArrayList<Mineral>  minerals;
+	public ArrayList<Site>   sites;
 	
     private WorkingProject(){
+    	sites = new ArrayList<Site>();
     }
 
     public static WorkingProject getInstance(){

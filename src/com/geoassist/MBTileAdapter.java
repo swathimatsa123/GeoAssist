@@ -1,9 +1,6 @@
 package com.geoassist;
 
 import android.content.res.AssetManager;
-import android.os.Environment;
-import android.util.Log;
-
 import com.google.android.gms.maps.model.Tile;
 import com.google.android.gms.maps.model.TileProvider;
 
@@ -20,7 +17,6 @@ public class MBTileAdapter  implements TileProvider {
 
     @Override
     public Tile getTile(int x, int y, int zoom) {
-    	Log.e("GetTile" , "Called " + String.valueOf(mapRdr));
     	if ( mapRdr != null) {
     		return  mapRdr.getTile(x, y, zoom);
     	}

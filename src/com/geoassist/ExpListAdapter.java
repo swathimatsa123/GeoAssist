@@ -19,7 +19,6 @@ import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.geoassist.data.RockType;
 import com.geoassist.data.WorkingProject;
@@ -32,13 +31,49 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 	public ArrayList<Object> Childtem = new ArrayList<Object>();
 	ArrayList<String> mapFiles = new ArrayList<String>();
 	ArrayList<String> mapsWithPath = new ArrayList<String>();
-	
+	WorkingProject proj = WorkingProject.getInstance();
+	public enum Order{
+		 LOCATION (0),
+		 ROCK (1),
+		 MINERALS (2),
+		 CONTACT (3),
+		 FOLD (4),
+		 FAULT (5),
+		 JOINT (6),
+		 VEIN (7),
+		 SAMPLE (8),
+		 PICTURE (9),
+		 NOTES (10),
+		 TRACK (11);
+		 public int order;
+		 private Order(int o) {
+			 order=o;
+		 }
+		 public int getOrder() {
+			 return order;
+		 }
+	 }
 	public LayoutInflater minflater;
 	public Activity activity;
-	EditText projNameEt;
-	EditText projLcnEt;
+	EditText projLatEt;
+	EditText projLngEt;
+	EditText siteNumEt;
+	double  lat = 0;
+	double  lng = 0;
 	final String[] rockTypes = { "Select", "Igneous", "Metamorphic" ,"Sedimentary" };
-    private Spinner rockTypeSpn;
+	final String[] contactTypes = { "Select", "Sharp", "Gradational", "Interbedding",
+									"Transition", "Undulating", "Non-conformable"};
+	
+	final String[] boundaryTypes = { "Select", "Stringer","Float","Fault" ,"Unconformity","Scour",
+									 "Dike", "Alluvium", "Lense"};
+
+	final String[] faultMovements = { "Select", "Normal","Reverse", "Dextral (R-lat)",	"Sinistral (L-lat)"};
+	final String[] units = {"Select", "Milli-meter", "Centimeter", "Meter", "Feet", "Inch"};
+	final String[] beddingTypes  = {"Select", "Dip Joints", "Strike Joints","Oblique Joints"};
+	final String[] foldTypes   =   {"Select", "Longitudinal Joints(a-b)","Crossjoints/Transverse (a-c)",
+									"Diagonal Joint","Radial Joint"};
+	final String[] compositionTypes   =   {"Select", "Quartz","Calcite","Chlorite","Other"};
+	private Spinner rockTypeSpn;
 	
 	public ExpListAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
 		groupItem = grList;
@@ -48,6 +83,10 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 	public void setInflater(LayoutInflater mInflater, Activity act) {
 		this.minflater = mInflater;
 		this.activity = act;
+	}
+	public void setLocation(double lat, double lng) {
+		this.lat = lat;
+		this.lng = lng;
 	}
 
 	@Override
@@ -63,53 +102,69 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 	@Override
 	public View getChildView(final int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-		Log.e("Get ChildView", "Group :" + String.valueOf(groupPosition) + 
-							   "Child :"  + String.valueOf(childPosition)
-				);
-		tempChild = (ArrayList<String>) Childtem.get(groupPosition);
-	
-		TextView text = null;
-//		ssif (convertView == null) {
-		if (true) {
-			int viewSrc = 0;
-			switch (groupPosition) {
-			case 0:
-				viewSrc = R.layout.project_info;
-				convertView = minflater.inflate(viewSrc, null);
-				ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
-				projNameEt = (EditText) convertView.findViewById(R.id.projNameEt);
-				projLcnEt = (EditText) convertView.findViewById(R.id.lcnEt);
-				doneBtn.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Log.e("Done", "ProjBtn " + String.valueOf(ExpListAdapter.this.projNameEt));
-						Log.e("Done", "ProjName " + ExpListAdapter.this.projNameEt.getText().toString());
-						UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
-						parent.collectDetails(groupPosition);
-					}
-				});
-            	mapFiles.add("Select Map Source");
-				this.walkdir(Environment.getExternalStorageDirectory());
-				ArrayAdapter<String> mapAdapter = new ArrayAdapter<String>(this.activity, 
-						android.R.layout.simple_dropdown_item_1line, mapFiles);
-				Spinner mapFilesSpn  = (Spinner)  convertView.findViewById(R.id.mapFileSpn);
-				mapFilesSpn.setAdapter(mapAdapter);
-				mapFilesSpn.setOnItemSelectedListener(this);
-
-				Log.e(" ProjNameEt " , String.valueOf(projNameEt));
-				break;
-			case 1:
-				convertView = setupRockInfoView (groupPosition);
-				break;
-				
-			default:
-				viewSrc = R.layout.info_detail;
-				convertView = minflater.inflate(viewSrc, null);
-				break;
+		int viewSrc = 0;
+		switch (groupPosition) {
+		case 0:
+			viewSrc = R.layout.site_info;
+			convertView = minflater.inflate(viewSrc, null);
+			ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+			projLatEt = (EditText) convertView.findViewById(R.id.siteLatEt);
+			projLatEt.setText(String.valueOf(this.lat));
+			projLngEt = (EditText) convertView.findViewById(R.id.siteLngEt);
+			projLngEt.setText(String.valueOf(this.lng));
+			siteNumEt = (EditText) convertView.findViewById(R.id.siteNumEt);
+			siteNumEt.setText(String.valueOf(proj.sites.size()));
+			Log.e("Done Btn", String.valueOf(doneBtn));
+			if (doneBtn!= null) { 
+			doneBtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+					parent.collectDetails(groupPosition);
+				}
+			});
 			}
+			break;
+		case 1:
+			convertView = setupRockInfoView (groupPosition);
+			break;
+
+		case 2:
+			convertView = setupMineralInfoView  (groupPosition);
+			break;
+			
+		case 3:
+			convertView = setupContactInfoView(groupPosition);
+			break;
+
+//		case 4:
+//			convertView = setupFoldInfoView(groupPosition);
+//			break;
+
+		case 5:
+			convertView = setupFaultInfoView(groupPosition);
+			break;
+
+		case 6:
+			convertView = setupJointInfoView(groupPosition);
+			break;
+
+		case 7:
+			convertView = setupVeinInfoView(groupPosition);
+			break;
+												
+		default:
+			viewSrc = R.layout.info_detail;
+			convertView = minflater.inflate(viewSrc, null);
+			break;
 		}
 		convertView.setBackgroundColor(Color.LTGRAY);
 		return convertView;
+	}
+
+	private Object Order(int groupPosition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public  View  setupRockInfoView (final int groupPosition) {
@@ -123,14 +178,10 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 		dtlsBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.e("DetailsBtn", "Got it");
-				WorkingProject proj = WorkingProject.getInstance();
 				int selection = ExpListAdapter.this.rockTypeSpn.getSelectedItemPosition();
-				Log.e("Seletion " , "Text @" + String.valueOf(selection) + " is" +rockTypes[selection]);
 				if (rockTypes[selection].equals("Igneous")) {
 					proj.rockType = RockType.IGNEOUS;
 				}
-				Log.e("RockType "+ String.valueOf(proj.rockType), " Value" + String.valueOf(RockType.IGNEOUS));
 				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
 				parent.startRockInfoActivity();
 			}
@@ -140,11 +191,127 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 		doneBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.e("DONE#### ", "Called### "+String.valueOf(groupPosition));
 				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
 				parent.collectDetails(groupPosition);
 			}
 		});
+		return convertView;
+	}
+
+	
+	public  View  setupMineralInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.add_mineral, null);
+		ImageButton addBtn = (ImageButton) convertView.findViewById(R.id.addMineralsBtn);
+		addBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+//				parent.collectDetails(groupPosition);
+			}
+		});
+
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.mineralDone);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		return convertView;
+	}
+
+	public  View  setupContactInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.contact_add, null);
+		ImageButton addBtn = (ImageButton) convertView.findViewById(R.id.add_contact);
+		addBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			}
+		});
+
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		ArrayAdapter<String> contactAdapter = new ArrayAdapter<String>(this.activity, 
+				android.R.layout.simple_dropdown_item_1line,contactTypes);
+		Spinner contactTypeSpn = (Spinner)  convertView.findViewById(R.id.contactTypeSpn);
+		contactTypeSpn.setAdapter(contactAdapter);
+		setSpinner(R.id.boundarySpn, convertView, boundaryTypes);
+		return convertView;
+	}
+	
+	public void setSpinner (int id, View v, final String[] types) {
+		Spinner spn = (Spinner)  v.findViewById(id);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.activity, 
+									android.R.layout.simple_dropdown_item_1line,
+									types);
+
+		spn.setAdapter(adapter);			
+	}
+
+	public  View  setupFoldInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.fold_view, null);
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		return convertView;
+	}
+
+	public  View  setupFaultInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.fault_view, null);
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		
+		setSpinner(R.id.offsetUnitsSpn, convertView, units);
+		setSpinner(R.id.movementSpn, convertView, faultMovements);
+		setSpinner(R.id.netSlipUnits,convertView, units);
+		return convertView;
+	}
+
+	public  View  setupJointInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.joint_view, null);
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		setSpinner(R.id.beddingSpn, convertView, beddingTypes);
+		setSpinner(R.id.foldTypeSpn, convertView, foldTypes);
+		return convertView;
+	}
+
+	public  View  setupVeinInfoView (final int groupPosition) {
+		View convertView = minflater.inflate(R.layout.vein_info, null);
+		ImageButton doneBtn = (ImageButton) convertView.findViewById(R.id.doneBtn);
+		doneBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UserDetails parent = (UserDetails)ExpListAdapter.this.activity;
+				parent.collectDetails(groupPosition);
+			}
+		});
+		setSpinner(R.id.compositionSpn, convertView, compositionTypes);
+		setSpinner(R.id.units, convertView, units);
 		return convertView;
 	}
 	
@@ -201,25 +368,15 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
-		Log.e("Spinner Select ", "Value is "+ String.valueOf(pos));
-		WorkingProject proj = WorkingProject.getInstance();
 		proj.rockType = pos;
-		if (parent.getId() == R.id.ignRockType) {
-			if (rockTypes[pos].equals("Rock Name" )){
-				proj.rockType = RockType.IGNEOUS;
-				Log.e("Type ", "Rock Name");
-			}
-			else if (rockTypes[pos].equals("Dike" )){
-				Log.e("Type ", "Dike");
-				proj.rockType = RockType.SEDIMENTARY;
-			}
-		}
-		else if (parent.getId() == R.id.mapFileSpn) {
-			if (pos != 0) {
-				proj.mapFile = mapsWithPath.get(pos-1);
-			}
-		}
-		
+//		if (parent.getId() == R.id.ignRockType) {
+//			if (rockTypes[pos].equals("Rock Name" )){
+//				proj.rockType = RockType.IGNEOUS;
+//			}
+//			else if (rockTypes[pos].equals("Dike" )){
+//				proj.rockType = RockType.SEDIMENTARY;
+//			}
+//		}
 	}
 
 	@Override
@@ -237,13 +394,12 @@ public class ExpListAdapter  extends BaseExpandableListAdapter implements OnItem
 	            if (listFile[i].isDirectory()) {
 	                walkdir(listFile[i]);
 	            } else if (listFile[i].getName().endsWith(pattern)){
-	            	Log.e("Adding" , listFile[i].getName());
 	            	mapFiles.add(listFile[i].getName());
 	            	mapsWithPath.add(Environment.getExternalStorageDirectory()+"/" +  dir.getName()+"/" +
 	            					listFile[i].getName());
-	            	Log.e("Path", Environment.getExternalStorageDirectory()+"/" + 
-	            					dir.getName()+"/" +
-	            					listFile[i].getName());
+//	            	Log.e("Path", Environment.getExternalStorageDirectory()+"/" + 
+//	            					dir.getName()+"/" +
+//	            					listFile[i].getName());
 	            }
 	        }
 	    }    

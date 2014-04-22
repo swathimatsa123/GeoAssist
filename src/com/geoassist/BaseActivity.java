@@ -38,7 +38,6 @@ public class BaseActivity extends Activity {
 	    switch (item.getItemId()) {
 		    case R.id.ic_map:
 		    	Log.e("OPTION MAP" , "Selected");
-//		    	startMap();
 		    	break;
 //		    case R.id.ic_notes:
 //		    	Log.e("OPTION Notes" , "Selected");
@@ -48,9 +47,8 @@ public class BaseActivity extends Activity {
 		    	Log.e("OPTION Email" , "Selected");
 //		    	saveProject(currProject);
 		    	break;
-
 		    case R.id.ic_save:
-		    	Log.e("OPTION Save" , "Selected");
+		    	this.finish();
 		    	break;
 		    case R.id.ic_action_settings:
 		    	Log.e("OPTION Settings" , "Selected");
@@ -64,14 +62,6 @@ public class BaseActivity extends Activity {
 	    return retVal;
 	}
 
-	public void startMap( ){
-//		Intent intnt = new Intent(this, GisMap.class);
-		Intent intnt = new Intent(this, LocationFindActivity.class);
-		Log.e("Intent ", "Started");
-		startActivityForResult(intnt, START_MAP_ACTIVITY);
-		overridePendingTransition(R.anim.right_in, R.anim.left_out);
-		return;
-	}
 
 	public void startSettings( ){
 		Intent intnt = new Intent(this, SettingsActivity.class);

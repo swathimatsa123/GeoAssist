@@ -158,13 +158,13 @@ public class ProjectReport {
 
 		  }
 
-		  private static void createList(Section subCatPart) {
-		    List list = new List(true, false, 10);
-		    list.add(new ListItem("First point"));
-		    list.add(new ListItem("Second point"));
-		    list.add(new ListItem("Third point"));
-		    subCatPart.add(list);
-		  }
+//		  private static void createList(Section subCatPart) {
+//		    List list = new List(true, false, 10);
+//		    list.add(new ListItem("First point"));
+//		    list.add(new ListItem("Second point"));
+//		    list.add(new ListItem("Third point"));
+//		    subCatPart.add(list);
+//		  }
 
 		  private static void addEmptyLine(Paragraph paragraph, int number) {
 		    for (int i = 0; i < number; i++) {

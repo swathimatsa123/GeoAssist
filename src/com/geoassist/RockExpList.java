@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import com.geoassist.data.RockNames;
-import com.geoassist.data.RockType;
 import com.geoassist.data.WorkingProject;
 
 

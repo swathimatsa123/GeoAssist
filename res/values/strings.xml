@@ -54,8 +54,6 @@
         <item>Deuteric alteration</item>
         <item>Chemical weathering</item>
     </string-array>
-
-    <string name="title_activity_get_details">GetDetailsActivity</string>
     <string name="grainSizeTxt">Grain Size</string>
     <string name="grainSizeMinTxt">Min Grain Size</string>
     <string name="grainSizeMaxTxt">Max Grain Size</string>
@@ -70,15 +68,7 @@
     <string name="usrNameTv">Scientist Name :</string>
     <string name="prjNameTv">Project Name :</string>
     <string name="lcnTv">Location     :</string>
-    <string name="title_activity_find_location"> Find Location</string>
-    <string name="title_activity_sample_details_one">Details </string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_collect_details_one">Details </string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
     <string name="contact">Contact</string>
-    <string name="title_activity_igneous_mineral">Igneous Mineral</string>
     <string name="mineralName">Mineral Name :</string>
     <string name="grainSize">Grain Size :</string>
     <string name="minGrainSize">Min Grain Size :</string>
@@ -90,12 +80,7 @@
     <string name="ignRockNameTxt">Rock  Name :</string>
     <string name="strikeTxt">Strike :</string>
     <string name="dipTxt">   Dip    :</string>
-    <string name="title_activity_igneous_rock_info">Rock Info</string>
-    <string name="title_activity_igneous_rock_details">Rock Details</string>
     <string name="attitude">Attitude</string>
-    <string name="title_activity_gis_map">GIS Map</string>
-    <string name="title_activity_grain_details">Grain Details</string>
-    <string name="title_activity_sediment_structures">Sediment Structures</string>
     <string name="title_activity_notes">Notes </string>
     <string name="sedStructures">Sediment Structures</string>
     <string name="notes">Notes</string>
@@ -111,5 +96,37 @@
     <string name="mapFile">Map File</string>
     <string name="action_done">Done</string>
     <string name="action_cancel">Cancel</string>
-    
+    <string name="title_activity_main_map">MainMap</string>
+    <string name="lattitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="fileName">Project Name</string>
+    <string name="projName">Project Name</string>
+    <string name="contactHint">Unit in contact</string>
+    <string name="contactType">Type</string>
+    <string name="contactBoundary">Boundary</string>
+    <string name="siteNum">Site #</string>
+    <string name="foldType">Fold Type</string>
+    <string name="hingeLineTrend">Hinge Line Trend</string>
+    <string name="hingeLinePlunge">Hinge Line Plunge</string>
+    <string name="limbAngle">Interlimb Angle</string>
+    <string name="tightNess">Tightness</string>
+    <string name="hinge">Hinge</string>
+    <string name="limbs">Limbs</string>
+    <string name="lambda">Lambda</string>
+    <string name="amplitude">Amplitude</string>
+    <string name="secondOrder">2nd Order</string>
+    <string name="symmetry">Symmetry</string>
+    <string name="moveMent">Movement</string>
+    <string name="trend">Trend</string>
+    <string name="sepMark">Separation</string>
+    <string name="sepHint"> Marker</string>
+    <string name="markerOffset">Marker Offset</string>
+    <string name="offsetHint">Offset</string>
+    <string name="piercingPt">Piercing Point</string>
+    <string name="netSlip">Net Slip</string>
+    <string name="mineralization">Mineralization</string>
+    <string name="spacing">Spacing</string>
+    <string name="beddingType">Bedding Type</string>
+    <string name="zoneWidth">Zone Width</string>
+
 </resources>

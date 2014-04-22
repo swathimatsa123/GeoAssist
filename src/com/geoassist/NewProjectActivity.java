@@ -1,17 +1,14 @@
 package com.geoassist;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import com.geoassist.data.Project;
 
 public class NewProjectActivity extends BaseActivity implements OnClickListener{
 	Spinner rockTypeSpn;
@@ -24,24 +21,24 @@ public class NewProjectActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.activity_new_project);
 //		setupUi();
 	}
-	private void setupUi () {
-		rockTypeSpn = (Spinner) findViewById(R.id.rockTypeSpn);
-		ArrayAdapter<CharSequence> rckTypeAdapter = ArrayAdapter.createFromResource(this,
-		        										R.array.rockType_array, 
-		        										android.R.layout.simple_spinner_dropdown_item);
-		rckTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		rockTypeSpn.setAdapter(rckTypeAdapter);
-
-		strcTypeSpn = (Spinner) findViewById(R.id.strcTypeSpn);
-		ArrayAdapter<CharSequence> strcTypeAdapter= ArrayAdapter.createFromResource(this,
-		        										R.array.strcType_array, 
-		        										android.R.layout.simple_spinner_dropdown_item);
-		strcTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		strcTypeSpn.setAdapter(strcTypeAdapter);		
-		
-		nextBtn = (ImageButton) findViewById(R.id.nextBtn);
-		nextBtn .setOnClickListener(this);
-	}
+//	private void setupUi () {
+//		rockTypeSpn = (Spinner) findViewById(R.id.rockTypeSpn);
+//		ArrayAdapter<CharSequence> rckTypeAdapter = ArrayAdapter.createFromResource(this,
+//		        										R.array.rockType_array, 
+//		        										android.R.layout.simple_spinner_dropdown_item);
+//		rckTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//		rockTypeSpn.setAdapter(rckTypeAdapter);
+//
+//		strcTypeSpn = (Spinner) findViewById(R.id.strcTypeSpn);
+//		ArrayAdapter<CharSequence> strcTypeAdapter= ArrayAdapter.createFromResource(this,
+//		        										R.array.strcType_array, 
+//		        										android.R.layout.simple_spinner_dropdown_item);
+//		strcTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//		strcTypeSpn.setAdapter(strcTypeAdapter);		
+//		
+//		nextBtn = (ImageButton) findViewById(R.id.mineralDone);
+//		nextBtn .setOnClickListener(this);
+//	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -58,7 +55,7 @@ public class NewProjectActivity extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.nextBtn:
+			case R.id.mineralDone:
 				startDetailsActivity();
 				break;
 		}

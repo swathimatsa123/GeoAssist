@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/contactName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/contactHint"
+        android:inputType="text" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/contactTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/contactName"
+        android:layout_alignParentLeft="true"
+        android:text="@string/contact"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/contactType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactTv"
+        android:layout_marginTop="16dp"
+        android:text="@string/contactType"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/contactTypeSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/contactBoundarySpn"
+        android:layout_alignLeft="@+id/contactName"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/contactBoundarySpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/contactType"
+        android:layout_marginTop="20dp"
+        android:text="@string/contactBoundary"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/boundarySpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/contactBoundarySpn"
+        android:layout_alignLeft="@+id/contactTypeSpn" />
+
+    <ImageButton
+        android:id="@+id/doneBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/contactType"
+        android:layout_below="@+id/contactBoundarySpn"
+        android:background="#0000"
+        android:src="@drawable/ic_done" />
+
+    <ImageButton
+        android:id="@+id/add_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/doneBtn"
+        android:layout_centerHorizontal="true"
+        android:background="#0000"
+        android:src="@drawable/ic_plus" />
+
+</RelativeLayout>

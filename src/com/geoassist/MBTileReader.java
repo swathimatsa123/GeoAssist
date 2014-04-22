@@ -4,7 +4,6 @@ import java.io.File;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -36,7 +35,7 @@ public class MBTileReader implements TileProvider, Closeable {
     public MBTileReader(String pathToFile) {
         int flags = SQLiteDatabase.OPEN_READONLY | SQLiteDatabase.NO_LOCALIZED_COLLATORS;
         this.mDatabase = SQLiteDatabase.openDatabase(pathToFile, null, flags);
-        Log.e("Reader Init", "Opened DB " + String.valueOf(this.mDatabase));
+//        Log.e("Reader Init", "Opened DB " + String.valueOf(this.mDatabase));
         this.calculateZoomConstraints();
         this.calculateBounds();
     }
@@ -48,8 +47,8 @@ public class MBTileReader implements TileProvider, Closeable {
     @Override
     public Tile getTile(int x, int y, int z) {
         Tile tile = NO_TILE;
-        Log.e("Inside GetTile ", "Zoom " + String.valueOf(this.isZoomLevelAvailable(z))+ 
-        						 " DB "  + String.valueOf(this.isDatabaseAvailable()));
+//        Log.e("Inside GetTile ", "Zoom " + String.valueOf(this.isZoomLevelAvailable(z))+ 
+//        						 " DB "  + String.valueOf(this.isDatabaseAvailable()));
         if (this.isZoomLevelAvailable(z) && this.isDatabaseAvailable()) {
             String[] projection = {
                 "tile_data"
@@ -60,21 +59,17 @@ public class MBTileReader implements TileProvider, Closeable {
                     String.valueOf(row), String.valueOf(x), String.valueOf(z)
             };
             Cursor c = this.mDatabase.query("tiles", projection, predicate, values, null, null, null);
-            Log.e("QRY ","Returned "+String.valueOf(c));
             if (c != null) {
                 c.moveToFirst();
                 if (!c.isAfterLast()) {
-                	Log.e("Cursor"," not After Last");
                     tile = new Tile(256, 256, c.getBlob(0));
                 }
                 else {
                     tile = new Tile(256, 256, c.getBlob(0));
-                	Log.e("Cursor"," Failed");
                 }
                 c.close();
             }
         }
-        Log.e("GetTile" ," Returning " + String.valueOf(tile));
         return tile;
     }
 
@@ -149,7 +144,6 @@ public class MBTileReader implements TileProvider, Closeable {
     // ------------------------------------------------------------------------
 
     private void calculateZoomConstraints() {
-    	Log.e("CalculateZooms", String.valueOf(this.isDatabaseAvailable()));
         if (this.isDatabaseAvailable()) {
             String[] projection = new String[] {
                 "value"
@@ -170,7 +164,6 @@ public class MBTileReader implements TileProvider, Closeable {
             c.moveToFirst();
             if (!c.isAfterLast()) {
                 this.mMinimumZoom = c.getInt(0);
-                Log.e("MinimumZoom", String.valueOf(this.mMinimumZoom));
 
             }
             c.close();
@@ -180,7 +173,6 @@ public class MBTileReader implements TileProvider, Closeable {
             c.moveToFirst();
             if (!c.isAfterLast()) {
                 this.mMaximumZoom = c.getInt(0);
-                Log.e("MaxZoom", String.valueOf(this.mMaximumZoom ));
             }
             c.close();
         }
