@@ -7,12 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.geoassist.data.Project;
 import com.geoassist.data.ProjectReport;
+import com.geoassist.data.WorkingProject;
 
 public class BaseActivity extends Activity {
 	static final int START_MAP_ACTIVITY= 200;
@@ -28,7 +28,7 @@ public class BaseActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.simple_menu, menu);
+//		getMenuInflater().inflate(R.menu.simple_menu, menu);
 		return true;
 	}
 
@@ -36,24 +36,24 @@ public class BaseActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean retVal = true;
 	    switch (item.getItemId()) {
-		    case R.id.ic_map:
-		    	Log.e("OPTION MAP" , "Selected");
-		    	break;
-//		    case R.id.ic_notes:
-//		    	Log.e("OPTION Notes" , "Selected");
+//		    case R.id.ic_map:
+//		    	Log.e("OPTION MAP" , "Selected");
 //		    	break;
-		    	
-		    case R.id.ic_email:
-		    	Log.e("OPTION Email" , "Selected");
-//		    	saveProject(currProject);
-		    	break;
-		    case R.id.ic_save:
-		    	this.finish();
-		    	break;
-		    case R.id.ic_action_settings:
-		    	Log.e("OPTION Settings" , "Selected");
-		    	startSettings();
-		    	break;
+////		    case R.id.ic_notes:
+////		    	Log.e("OPTION Notes" , "Selected");
+////		    	break;
+//		    	
+//		    case R.id.ic_email:
+//		    	Log.e("OPTION Email" , "Selected");
+////		    	saveProject(currProject);
+//		    	break;
+//		    case R.id.ic_save:
+//		    	this.finish();
+//		    	break;
+//		    case R.id.ic_action_settings:
+//		    	Log.e("OPTION Settings" , "Selected");
+//		    	startSettings();
+//		    	break;
 		    	
 		    default:
 		      retVal = super.onOptionsItemSelected(item);
@@ -65,20 +65,19 @@ public class BaseActivity extends Activity {
 
 	public void startSettings( ){
 		Intent intnt = new Intent(this, SettingsActivity.class);
-		Log.e("Intent ", "Started");
 		startActivityForResult(intnt, START_SETTINGS_ACTIVITY);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 		return;
 	}
 	
-	public void saveProject ( Project project){
+	public void saveProject ( WorkingProject project){
 		ProjectReport rp = new ProjectReport();
 		rp.save(project);
 		sendReport(rp.getFileName(), project);
 		return;
 	}
 	
-	public void sendReport(String fileName, Project  proj) {
+	public void sendReport(String fileName, WorkingProject proj) {
 	    Uri attachment = Uri.fromFile(new File(fileName));
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("application/pdf");

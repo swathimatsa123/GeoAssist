@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ExpandableListView
+        android:id="@+id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" >
+    </ExpandableListView>
+<!-- 	<ImageButton -->
+<!--         android:id="@+id/doneBtn" -->
+<!--         android:contentDescription="@string/done" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_below="@+id/android:list" -->
+<!--         android:background="#0000" -->
+<!--         android:src="@drawable/ic_done" /> -->
+<!--     <ImageButton -->
+<!--         android:id="@+id/addMineralsBtn" -->
+<!--         android:contentDescription="@string/addMinerals" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_marginLeft="16dp" -->
+<!-- 		android:layout_toLeftOf="@+id/doneBtn"  -->
+<!--     	android:layout_alignBottom="@+id/doneBtn"  -->
+<!--         android:background="#0000" -->
+<!--         android:src="@drawable/ic_plus" /> -->
+		
+</RelativeLayout>
+

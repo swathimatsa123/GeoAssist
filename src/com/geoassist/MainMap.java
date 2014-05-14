@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
+import com.geoassist.data.Site;
 import com.geoassist.data.WorkingProject;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -41,6 +42,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -50,18 +53,21 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 														   OnFocusChangeListener,
 														   OnEditorActionListener,
 														   OnItemSelectedListener{
-	static final int START_NEW_PROJECT = 100;
+	static final int NEW_SITE_ACTIVITY = 100;
 	EditText  		projNameEt;
 	ImageButton		saveBtn;
 	ImageButton		reportBtn;
 	ImageButton		cancelBtn;
 	ImageButton		sampleBtn;
 	ImageButton		settingsBtn;
-
+	Spinner         mapLyrSpn;
 	Boolean			projNamed = false;
 	ArrayList<String> mapFiles = new ArrayList<String>();
 	ArrayList<String> mapsWithPath = new ArrayList<String>();
+	final String[] rockTypes = {"All", "Igneous", "Metamorphic","Sedimentary" };
+	String			lyrFltr = rockTypes[0];
 	PlaceholderFragment mapFrag;
+	
 	double lat;
 	double lng;
 	@Override
@@ -77,21 +83,15 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, mapFrag).commit();
 		}
-//	    projNameEt = (EditText) actionBar.getCustomView().findViewById(R.id.mainProjName);
-//	    projNameEt.setText("Untitled Project");
-//	    projNameEt.clearFocus();
-//	    projNameEt.setInputType(InputType.TYPE_NULL);
-//	    projNameEt.setOnFocusChangeListener(this);
-//	    projNameEt.setOnEditorActionListener(this);
 	    saveBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.done);
 	    saveBtn.setOnClickListener(this);
-	    reportBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.compass);
+	    reportBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.report);
 	    reportBtn.setOnClickListener(this);
 
 	    cancelBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.cancel);
 	    cancelBtn.setOnClickListener(this);
 
-	    sampleBtn  = (ImageButton)actionBar.getCustomView().findViewById(R.id.camera);
+	    sampleBtn  = (ImageButton)actionBar.getCustomView().findViewById(R.id.newSite);
 	    sampleBtn.setOnClickListener(this);
 
 	    settingsBtn  = (ImageButton)actionBar.getCustomView().findViewById(R.id.settings);
@@ -102,7 +102,6 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		ArrayAdapter<String> mapAdapter = new ArrayAdapter<String>(this, 
 					android.R.layout.simple_dropdown_item_1line, mapFiles);
 		Spinner mapFilesSpn  = (Spinner)  findViewById(R.id.mainMapSrc);
-		Log.e("MapFileSpn", String.valueOf(mapFilesSpn));
 		mapFilesSpn.setAdapter(mapAdapter);
 		mapFilesSpn.setOnItemSelectedListener(this);
 	}
@@ -113,6 +112,16 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main_map, menu);
 		return true;
+	}
+
+	@Override
+	protected void onResume() {
+		mapLyrSpn  = (Spinner) findViewById(R.id.mapLyrSpn);
+		ArrayAdapter<String> mapLyrAdapter = new ArrayAdapter<String>(this, 
+					android.R.layout.simple_dropdown_item_1line,rockTypes);
+		mapLyrSpn.setAdapter(mapLyrAdapter );
+		mapLyrSpn.setOnItemSelectedListener(this);
+		super.onResume();
 	}
 
 	@Override
@@ -136,7 +145,6 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 	            if (listFile[i].isDirectory()) {
 	                walkdir(listFile[i]);
 	            } else if (listFile[i].getName().endsWith(pattern)){
-//	            	Log.e("Adding" , listFile[i].getName());
 	            	mapFiles.add(listFile[i].getName());
 	            	mapsWithPath.add(Environment.getExternalStorageDirectory()+"/" +  dir.getName()+"/" +
 	            					listFile[i].getName());
@@ -150,33 +158,35 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view,int pos, long id) {
-		Log.e("Spinner Select ", "Value is  "+ String.valueOf(R.id.mainMapSrc)+ " " + view.getId());
-		Log.e("Parent Select ", "Value  is  "+ parent.getId());
-
 		if (parent.getId() == R.id.mainMapSrc) {
-			Log.e("Inner Spinner Select ", "Value is "+ String.valueOf(pos));
 			WorkingProject proj = WorkingProject.getInstance();
 			if (pos != 0) {
 				proj.mapFile = mapsWithPath.get(pos-1);
-				Log.e("MAP File", proj.mapFile);
+				this.mapFrag.refreshMapView();
 			}
 		}
+		else if (parent.getId() == R.id.mapLyrSpn) {
+			if (pos >= 0 ) {
+				this.lyrFltr = rockTypes[pos];
+				this.mapFrag.refreshMapView();
+			}
+		}
+
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
-		Log.e("Nothing Selecte", "Why");
 		
 	}
 
 	public void startNewSite() {
-		Intent intnt = new Intent(this, UserDetails.class);
+		Intent intnt = new Intent(this, AddSiteActivity.class);
 		Bundle dataBundle = new Bundle();
 		dataBundle.putDouble("LatValue", this.mapFrag.currentLat);
 		dataBundle.putDouble("LongValue",this.mapFrag.currentLng);
 		intnt.putExtras(dataBundle);
-		startActivityForResult(intnt, START_NEW_PROJECT);
+		startActivityForResult(intnt, NEW_SITE_ACTIVITY);
 		return;
 	}
 
@@ -186,9 +196,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 	public static class PlaceholderFragment extends Fragment 				
 								implements GooglePlayServicesClient.ConnectionCallbacks,
 								GooglePlayServicesClient.OnConnectionFailedListener,
-								LocationListener,
-								OnClickListener,
-								OnEditorActionListener{
+								LocationListener{
 		LocationRequest 			mLocationRequest;
 		private Marker 				myPosMarker;
 		private GoogleMap 			map;
@@ -227,21 +235,29 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		public void onLocationChanged(Location location) {
 		    currentLat = location.getLatitude();
 		    currentLng = location.getLongitude();
+		    refreshMapView();
+		}
+
+		public void refreshMapView() {
+		    if ((currentLat == 0) && (currentLng == 0)){
+		    	return;
+		    }
+		    	
 			myPos      = new LatLng(currentLat,currentLng);
+			for (Marker marker: markerList) {
+				marker.remove();
+			}
+			markerList.clear();
 			WorkingProject proj = WorkingProject.getInstance();
 			if (map == null) {
 				SupportMapFragment supportMap = (SupportMapFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
 				map = supportMap.getMap();
 	
 				if (map != null) {
-						//user marker stuff
-						map.setMapType(GoogleMap.MAP_TYPE_NONE);
+//						map.setMapType(GoogleMap.MAP_TYPE_NONE);
 						if (proj.mapFile != null) {
 							map.addTileOverlay(new TileOverlayOptions().tileProvider(new MBTileAdapter(proj.mapFile )));
 						}
-						myPosMarker = map.addMarker(new MarkerOptions()
-				    									.position(myPos)
-				    									.draggable(false));
 				    	map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
 				}
 			}
@@ -249,25 +265,50 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 				if (proj.mapFile != null) {
 					map.addTileOverlay(new TileOverlayOptions().tileProvider(new MBTileAdapter(proj.mapFile )));
 				}
-				myPosMarker.setPosition(myPos);
 			}
-			/* Add Samples here */
-			Log.e("Sites" , String.valueOf(proj.sites.size()) + "Markers "+ String.valueOf(markerList.size()));
-			
+			BitmapDescriptor usrIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker);
+			myPosMarker = map.addMarker(new MarkerOptions()
+	    									.position(myPos)
+	    									.draggable(false)
+	    									.title("You")
+	    									.icon(usrIcon));
+			myPosMarker.showInfoWindow();
+			markerList.add(myPosMarker);
 			for (int i=0; i < proj.sites.size(); i++) {
-					LatLng 	sitePos = new LatLng(proj.sites.get(i).lat, proj.sites.get(i).lng);
-					if (proj.sites.get(i).lat != 0) {
-						Log.e("Adding", "@ "+ String.valueOf(proj.sites.get(i).lat)+ " "+ String.valueOf(proj.sites.get(i).lng));
-						Log.e("Marker" , "I: "+ String.valueOf(i) + "Size "+ String.valueOf(markerList.size()));
+				Site site = proj.sites.get(i);
+				LatLng 	sitePos = new LatLng(site.lat, site.lng);
+				if (getActivity() == null) {
+					return;
+				}
+					
+				if (((MainMap)getActivity()).lyrFltr.equals("All")||
+					(site.rockType	== null)||
+				    ((MainMap)getActivity()).lyrFltr.equals(site.rockType)) {
+					if (site.lat != 0) {
+						int bmpSrc = R.drawable.red_pin;
+						if (site.rockType!= null) {
+							if (site.rockType.equals(((MainMap) getActivity()).rockTypes[1])) {
+								bmpSrc = R.drawable.red_pin;
+							}
+							else if (site.rockType.equals(((MainMap) getActivity()).rockTypes[2])) {
+								bmpSrc = R.drawable.blue_pin;
+							}
+							else if (site.rockType.equals(((MainMap) getActivity()).rockTypes[3])) {
+								bmpSrc = R.drawable.green_pin;
+							}
+						}
+						BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(bmpSrc);
 						myPosMarker = map.addMarker(new MarkerOptions()
 														.position(sitePos)
-														.title("Sample "+ String.valueOf(i))
+														.title("Site  "+ String.valueOf(i+1))
+														.icon(icon)
 														.draggable(false));
+						myPosMarker.showInfoWindow();
 						markerList.add(myPosMarker);
 					}
+				}
 			}
 		}
-
 		@Override
 		public void onConnectionFailed(ConnectionResult arg0) {
 			// TODO Auto-generated method stub
@@ -285,33 +326,19 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			// TODO Auto-generated method stub
 			
 		}
-
-		@Override
-		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			
-		}
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		WorkingProject workingProj = WorkingProject.getInstance();
 		switch(v.getId()) {
 		case R.id.done:
 			Log.e("Save", "Called");
-			WorkingProject workingProj = WorkingProject.getInstance();
-//			saveProject(workingProj);
 			this.saveDialog();
-//			this.finish();
 			break;
-		case R.id.compass:
+		case R.id.report:
 			Log.e("Report", "Called");
+			saveProject(workingProj);
 			this.finish();
 			break;
 		case R.id.settings:
@@ -322,7 +349,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			Log.e("Cancel", "Called");
 			this.exitAlert();
 			break;
-		case R.id.camera:
+		case R.id.newSite:
 			Log.e("AddSampe", "Called");
 			startNewSite();
 			break;
@@ -355,8 +382,8 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
-			case START_NEW_PROJECT:
-				
+			case NEW_SITE_ACTIVITY:
+				this.mapFrag.refreshMapView();
 				break;
 			}
 		}

@@ -14,12 +14,12 @@
         android:layout_alignParentLeft="true"
         class="com.google.android.gms.maps.SupportMapFragment" />
 
-<!--     <Spinner -->
-<!--         android:layout_above="@+id/mainMapSrc" -->
-<!--         android:id="@+id/mainMapSrc" -->
-<!--         android:layout_width="wrap_content" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_alignParentBottom="true" -->
-<!--         android:layout_alignParentLeft="true" /> -->
+    <Spinner
+        android:id="@+id/mapLyrSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/map"
+        android:layout_alignTop="@+id/map"
+        android:background="#32cf37" />
 
 </RelativeLayout>

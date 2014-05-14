@@ -14,10 +14,11 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.geoassist.data.ProjectReport;
@@ -42,9 +43,9 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	    doneBtn.setOnClickListener(this);
 	    ImageButton cancelBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.cancel);
 	    cancelBtn.setOnClickListener(this);
-	    ImageButton cameraBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.camera);
+	    ImageButton cameraBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.newSite);
 	    cameraBtn.setOnClickListener(this);
-	    ImageButton compassBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.compass);
+	    ImageButton compassBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.report);
 	    compassBtn.setOnClickListener(this);
 	    ImageButton notesBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.perSampleNotes);
 	    notesBtn.setOnClickListener(this);
@@ -54,49 +55,65 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	}
 
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		boolean retVal = true;
-	    switch (item.getItemId()) {
-		    case R.id.perSampleNotes:
-		    	Log.e("OPTION Notes" , "Selected");
-		    	break;
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		boolean retVal = true;
+//	    switch (item.getItemId()) {
+//		    case R.id.perSampleNotes:
+//		    	Log.e("OPTION Notes" , "Selected");
+//		    	break;
+//
+//		    case R.id.report:
+//		    	Log.e("OPTION Compass" , "Selected");
+//		    	break;
+//		    
+//		    case R.id.newSite:
+//		    	invokeCamera();
+//		    	break;
+//
+//		    case R.id.cancel:
+//		    	Log.e("OPTION Cancel" , "Selected");
+////		    	this.finish();
+//		    	break;
+//		    case R.id.done:
+//		    	Log.e("OPTION Save" , "Selected");
+//		    	this.finish();
+//		    	break;
+//		    case R.id.settings:
+//		    	Log.e("OPTION Settings" , "Selected");
+//		    	startSettings();
+//		    	break;
+//		    	
+//		    default:
+//		      retVal = super.onOptionsItemSelected(item);
+//		      break;
+//	    }
+//	    return retVal;
+//	}
 
-		    case R.id.compass:
-		    	Log.e("OPTION Compass" , "Selected");
-		    	break;
-		    
-		    case R.id.camera:
-		    	invokeCamera();
-		    	break;
-
-		    case R.id.cancel:
-		    	Log.e("OPTION Cancel" , "Selected");
-		    	this.finish();
-		    	break;
-		    case R.id.done:
-		    	Log.e("OPTION Save" , "Selected");
-		    	this.finish();
-		    	break;
-		    case R.id.settings:
-		    	Log.e("OPTION Settings" , "Selected");
-		    	startSettings();
-		    	break;
-		    	
-		    default:
-		      retVal = super.onOptionsItemSelected(item);
-		      break;
+	public boolean isNumber(String str) {
+		try { 
+	        Integer.parseInt(str); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
 	    }
-	    return retVal;
+	    return true;
 	}
 
 	public void startSettings( ){
 		Intent intnt = new Intent(this, SettingsActivity.class);
-		Log.e("Intent ", "Started");
 		startActivityForResult(intnt, START_SETTINGS_ACTIVITY);
 		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 		return;
 	}
+	
+	public void invokeActivity(Class<?> activityClass, int activityCode) {
+		Intent intnt = new Intent(this, activityClass);
+		startActivityForResult(intnt, activityCode);
+		overridePendingTransition(R.anim.right_in, R.anim.left_out);
+		return;
+	}
+	
 	
 	public void saveProject ( WorkingProject workingproject){
 		ProjectReport rp = new ProjectReport();
@@ -130,17 +147,14 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
     	startActivityForResult(mIntent, START_CAMERA_ACTIVITY);
 	}
 	@Override
-	  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		   Toast.makeText(myCxt, "Activity completed", Toast.LENGTH_LONG).show();
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	        if (resultCode == Activity.RESULT_OK) {
-	            // Image captured and saved to fileUri specified in the Intent
 	        	galleryAddPic();
 	        	if (data != null){ 
 	            	Toast.makeText(this, "Image saved to:" +
 	                     data.getData()+"---", Toast.LENGTH_LONG).show();
 	            }
 	        } else if (resultCode == Activity.RESULT_CANCELED) {
-//	        	Toast.makeText(myCxt, "Cancelled Activity:" , Toast.LENGTH_LONG).show();
 	        } else {
 //	        	Toast.makeText(myCxt, "Failed Activity:" , Toast.LENGTH_LONG).show();
 	        }
@@ -151,8 +165,6 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	    Uri contentUri = Uri.fromFile(mediaFile);
 	    mediaScanIntent.setData(contentUri);
 	    sendBroadcast(mediaScanIntent);
-	    Log.e(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString(),"URI1");
-	    Log.e(contentUri.toString(),"URI2");
 	    Intent editIntent = new Intent(Intent.ACTION_EDIT);
 	    editIntent.setDataAndType(contentUri, "image/*");
 	    editIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -182,32 +194,31 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 		    return mediaFile;
 	}
 
-
 	@Override
 	public void onClick(View v) {
-		Log.e("OnClick ", "Recognized");
 	    switch (v.getId()) {
 		    case R.id.perSampleNotes:
 		    	Log.e("OPTION Notes" , "Selected");
 		    	break;
 	
-		    case R.id.compass:
+		    case R.id.report:
 		    	Log.e("OPTION Compass" , "Selected");
 		    	break;
 		    
-		    case R.id.camera:
+		    case R.id.newSite:
 		    	invokeCamera();
 		    	break;
-	
-		    case R.id.cancel:
-		    	Log.e("OPTION Cancel" , "Selected");
-		    	this.finish();
-		    	break;
-		    case R.id.done:
-		    	Log.e("OPTION Save" , "Selected");
-		    	this.finish();
-		    	break;
-		    case R.id.settings:
+
+			case R.id.done:
+				Intent resultIntent = new Intent();
+				setResult(Activity.RESULT_OK, resultIntent);
+				finish();
+				break;
+			case R.id.cancel:
+				finish();
+				break;
+
+			case R.id.settings:
 		    	Log.e("OPTION Settings" , "Selected");
 		    	startSettings();
 		    	break;
@@ -216,5 +227,22 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	    }
 	    return ;
 	}
+	
+	public String getTextFromEt(int etId) {
+		EditText et = (EditText)findViewById(etId);
+		String ret = "";
+		if (et != null) {
+			ret = et.getText().toString();
+		}
+		return ret;
+	}
 
+	public String getTextFromSpinner(int spnId) {
+		Spinner spn= (Spinner)findViewById(spnId);
+		String ret = "";
+		if (spn != null) {
+			ret = spn.getSelectedItem().toString();
+		}
+		return ret;
+	}
 }

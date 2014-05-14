@@ -3,30 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-		<ListView
-    	    android:id="@+id/storedMinerals"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:layout_above="@+id/doneBtn"
-    	    android:layout_alignParentLeft="true" >
-    	</ListView>
-    	<ImageButton
-    	    android:id="@+id/doneBtn"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignParentBottom="true"
-    	    android:layout_alignParentLeft="true"
-    	    android:background="#0000"
-    	    android:src="@drawable/ic_done" />
 
-    	<ImageButton
-    	    android:id="@+id/add_contact"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignParentBottom="true"
-    	    android:layout_marginLeft="30dp"
-    	    android:layout_toRightOf="@+id/doneBtn"
-    	    android:background="#0000"
-    	    android:src="@drawable/ic_plus" />
+    <TextView
+        android:id="@+id/mineralInfo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/hello_world" 
+        style="@android:style/TextAppearance.Large">
+    </TextView>
+
+    <TextView
+        android:id="@+id/mineralInfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/mineralInfo1"
+        android:layout_marginTop="40dp"
+        android:text="@string/hello_world" 
+        style="@android:style/TextAppearance.Large"/>
+
+    <TextView
+        android:id="@+id/mineralInfo3"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/mineralInfo2"
+        android:layout_marginTop="44dp"
+        android:text="@string/hello_world" />
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/mineralInfo3"
+        android:background="#0000"
+        android:contentDescription="@string/done"
+        android:src="@drawable/ic_delete" />
     
 </RelativeLayout>

@@ -1,23 +1,40 @@
 package com.geoassist;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-public class SettingsActivity extends Activity {
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.geoassist.data.User;
+public class SettingsActivity extends BaseActionBarActivity implements OnClickListener{
 	EditText   usrNameEt;
 	EditText   emailToEt;
 	EditText   emailCcEt;
 	SharedPreferences preferences;
+	ImageButton		doneBtn;
+	ImageButton		cancelBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+	    ActionBar actionBar = getSupportActionBar();
+	    // add the custom view to the action bar
+	    actionBar.setCustomView(R.layout.settings_menu);
+	    actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+	    doneBtn  = (ImageButton)actionBar.getCustomView().findViewById(R.id.done);
+	    doneBtn.setOnClickListener(this);
+	    doneBtn.getRootView().setBackgroundColor(0xFFF0FFF0);
+
+	    cancelBtn  = (ImageButton)actionBar.getCustomView().findViewById(R.id.cancel);
+	    cancelBtn.setOnClickListener(this);
+
 		usrNameEt = (EditText) findViewById(R.id.settingUsrNameEt);
 		emailToEt = (EditText) findViewById(R.id.emailToEt);
 		emailCcEt = (EditText) findViewById(R.id.emailccEt);
@@ -31,29 +48,25 @@ public class SettingsActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.settings_menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.ic_done) {
-			Editor edit = preferences.edit();
-			edit.putString("username", usrNameEt.getText().toString());
-			edit.putString("emailTo", emailToEt.getText().toString());
-			edit.putString("emailCc", emailCcEt.getText().toString());
-			edit.commit(); 
-			finish();
-			return true;
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.done:
+				Editor edit = preferences.edit();
+				edit.putString("username", usrNameEt.getText().toString());
+				edit.putString("emailTo", emailToEt.getText().toString());
+				edit.putString("emailCc", emailCcEt.getText().toString());
+				edit.commit();
+				User usr = User.getInstance();
+				usr.setDetails( usrNameEt.getText().toString(), 
+								emailToEt.getText().toString(), 
+								emailCcEt.getText().toString());
+				
+				finish();
+				break;
+			case R.id.cancel:
+				finish();
+				break;
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 }

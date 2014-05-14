@@ -4,11 +4,11 @@
     android:layout_height="match_parent" >
 
     <ImageButton
-        android:id="@+id/compass"
+        android:id="@+id/report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/camera"
-        android:layout_toRightOf="@+id/camera"
+        android:layout_alignTop="@+id/newSite"
+        android:layout_toRightOf="@+id/newSite"
         android:background="#0000"
         android:src="@drawable/ic_report" />
 
@@ -31,7 +31,7 @@
         android:src="@drawable/ic_cancel" />
 
     <ImageButton
-        android:id="@+id/camera"
+        android:id="@+id/newSite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/cancel"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/compass"
+        android:layout_alignTop="@+id/report"
         android:background="#0000"
         android:src="@drawable/ic_main_settings" />
 
@@ -51,8 +51,8 @@
         android:id="@+id/mainMapSrc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/compass"
+        android:layout_alignTop="@+id/report"
         android:layout_toLeftOf="@+id/settings"
-        android:layout_toRightOf="@+id/compass" />
+        android:layout_toRightOf="@+id/report" />
 
 </RelativeLayout>

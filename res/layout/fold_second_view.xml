@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+     android:fillViewport="true">
+
+
+	<LinearLayout 
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/foldTypeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/limbAngleTv"
+        android:text="@string/foldType"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/foldTypeSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/foldTypeTv"
+        android:layout_alignLeft="@+id/hingeLinePlungeEt"
+        android:layout_alignParentRight="true"
+		style="@android:style/Widget.Spinner" 
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:id="@+id/hingeLinePlungeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hingeLineTrendEt"
+        android:layout_marginTop="17dp"
+        android:text="@string/hingeLinePlunge"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/hingeLineTrendTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/foldTypeTv"
+        android:layout_marginTop="18dp"
+        android:text="@string/hingeLineTrend"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/hingeLinePlungeEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hingeLinePlungeTv"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/hingeLinePlungeTv"
+        android:layout_toRightOf="@+id/lambdaEt"
+        android:ems="10"
+        android:inputType="number" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/limbAngleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hingeLinePlungeTv"
+        android:layout_marginTop="18dp"
+        android:text="@string/limbAngle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/limbAngleEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/limbAngleTv"
+        android:layout_alignLeft="@+id/hingeLinePlungeEt"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tightNessTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/limbAngleTv"
+        android:text="@string/tightNess"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/hingeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tightNessTv"
+        android:text="@string/hinge"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/limbsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hingeTv"
+        android:layout_marginTop="14dp"
+        android:text="@string/limbs"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/limbsSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/limbsTv"
+        android:layout_alignLeft="@+id/tightNessSpn"
+	style="@android:style/Widget.Spinner" 
+        android:layout_alignTop="@+id/limbsTv" />
+
+    <TextView
+        android:id="@+id/lambdaTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/limbsTv"
+        android:layout_marginTop="17dp"
+        android:text="@string/lambda"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/amplitudeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lambdaTv"
+        android:layout_marginTop="16dp"
+        android:text="@string/amplitude"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/amplitudeEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/amplitudeTv"
+        android:layout_alignLeft="@+id/lambdaEt"
+        android:layout_alignTop="@+id/amplitudeTv"
+        android:layout_toLeftOf="@+id/lambdaUnits"
+        android:ems="5"
+        android:inputType="number" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/secondOrderTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/amplitudeTv"
+        android:layout_below="@+id/amplitudeTv"
+        android:layout_marginTop="14dp"
+        android:text="@string/secondOrder"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/symmetryTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/secondOrderTv"
+        android:layout_below="@+id/secondOrderTv"
+        android:text="@string/symmetry"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/hingeLineTrendEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hingeLineTrendTv"
+        android:layout_alignLeft="@+id/hingeLinePlungeEt"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/hingeLineTrendTv"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
+    <Spinner
+        android:id="@+id/tightNessSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tightNessTv"
+        android:layout_alignLeft="@+id/limbAngleEt"
+	style="@android:style/Widget.Spinner" 
+        android:layout_alignTop="@+id/tightNessTv" />
+
+    <Spinner
+        android:id="@+id/hingeSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hingeTv"
+        android:layout_alignLeft="@+id/limbsSpn"
+	style="@android:style/Widget.Spinner" 
+        android:layout_alignTop="@+id/hingeTv" />
+
+    <EditText
+        android:id="@+id/lambdaEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lambdaTv"
+        android:layout_alignTop="@+id/lambdaTv"
+        android:layout_toRightOf="@+id/limbAngleTv"
+        android:ems="3"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/symmetrySpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/symmetryTv"
+        android:layout_alignTop="@+id/symmetryTv"
+	style="@android:style/Widget.Spinner" 
+        android:layout_toRightOf="@+id/hingeLinePlungeTv" />
+
+    <Spinner
+        android:id="@+id/ampUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/secondOrderTv"
+        android:layout_alignBottom="@+id/amplitudeEt"
+        android:layout_alignTop="@+id/amplitudeEt"
+	style="@android:style/Widget.Spinner" 
+        android:layout_toRightOf="@+id/amplitudeEt" />
+
+    <Spinner
+        android:id="@+id/lambdaUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/amplitudeTv"
+        android:layout_alignTop="@+id/lambdaEt"
+	style="@android:style/Widget.Spinner" 
+        android:layout_toRightOf="@+id/lambdaEt" />
+
+    <Spinner
+        android:id="@+id/secondOrderSpn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/secondOrderTv"
+        android:layout_alignTop="@+id/secondOrderTv"
+	style="@android:style/Widget.Spinner" 
+        android:layout_toRightOf="@+id/hingeLinePlungeTv" />
+		</RelativeLayout>
+            
+    </LinearLayout>
+</ScrollView>

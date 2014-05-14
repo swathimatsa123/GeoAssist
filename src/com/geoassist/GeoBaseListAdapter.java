@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckedTextView;
 
 
 public  class GeoBaseListAdapter extends BaseExpandableListAdapter {
@@ -49,6 +50,11 @@ public  class GeoBaseListAdapter extends BaseExpandableListAdapter {
 	public int getGroupCount() {
 		return groupItem.size();
 	}
+	
+	private Object Order(int groupPosition) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 
 	@Override
 	public void onGroupCollapsed(int groupPosition) {
@@ -78,8 +84,12 @@ public  class GeoBaseListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		return null;
+		if (convertView == null) {
+			convertView = minflater.inflate(R.layout.info_group, null);
+		}
+		((CheckedTextView) convertView).setText(groupItem.get(groupPosition));
+		((CheckedTextView) convertView).setChecked(isExpanded);
+		return convertView;
 	}
 
 	@Override

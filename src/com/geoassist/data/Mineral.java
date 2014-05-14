@@ -12,6 +12,6 @@ public class Mineral implements Serializable {
 	public float	maxGrainSize;
 	public float	composition;
 	public String   mineralCleavege;
-	public  int     grainForm;
-	public  int     grainShape;
+	public String   grainForm;
+	public String   grainShape;
 }

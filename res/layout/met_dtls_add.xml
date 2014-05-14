@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<TextView
+	    android:id="@+id/strikeTv"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginTop="26dp"
+	    android:text="@string/strikeTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<EditText
+	    android:id="@+id/strikeEt"
+	    style="@style/geo_edit_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/strikeTv"
+	    android:hint="@string/strikeTxt"
+	    android:layout_marginTop="16dp"
+	    android:ems="10"
+	    android:lines="2"
+	    android:inputType="text" >
+	</EditText>
+
+	<TextView
+	    android:id="@+id/dipTv"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/strikeEt"
+	    android:text="@string/dipTxt"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<EditText
+	    android:id="@+id/dipEt"
+	    style="@style/geo_edit_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/dipTv"
+	    android:ems="10"
+	    android:lines="2"
+	    android:hint="@string/dipTxt"
+	    android:inputType="text" />
+
+
+	<TextView
+	    android:id="@+id/lineationTv"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/dipEt"
+	    android:text="@string/lineation"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<EditText
+	    android:id="@+id/lineationEt"
+	    style="@style/geo_edit_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/lineationTv"
+	    android:ems="10"
+	    android:lines="2"
+	    android:hint="@string/lineation"
+	    android:inputType="text" />
+
+	<TextView
+	    android:id="@+id/plungeTv"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/lineationEt"
+	    android:text="@string/plunge"
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	<EditText
+	    android:id="@+id/plungeEt"
+	    style="@style/geo_edit_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dp"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/plungeTv"
+	    android:ems="10"
+	    android:hint="@string/plunge"
+	    android:inputType="text"
+	    android:lines="2" />
+							
+</RelativeLayout>

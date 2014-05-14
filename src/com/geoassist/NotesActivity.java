@@ -15,6 +15,8 @@ public class NotesActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.activity_notes);
 		nextBtn = (ImageButton) findViewById(R.id.mineralDone);
 		nextBtn .setOnClickListener(this);
+		nextBtn.getRootView().setBackgroundColor(0xFFF0FFF0);
+
 	}
 
 	

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -8,7 +8,13 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        All customizations that are NOT specific to a particular API-level can go here.
     </style>
-
+  	<style name="geo_edit_text" parent="@android:style/Widget.EditText">
+  	   <item name="android:height">60dp</item>
+       <item name="android:paddingLeft">5dp</item>
+       <item name="android:paddingRight">25dp</item>
+       <item name="android:background">@drawable/rect_text_edit</item>
+       <item name="android:layout_height">60dp</item>
+    </style>
 </resources>

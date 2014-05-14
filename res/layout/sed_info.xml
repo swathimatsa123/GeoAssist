@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+     android:fillViewport="true">
+
+
+	<LinearLayout 
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+	<RelativeLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+    <TextView
+        android:id="@+id/sedDia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/grainDia"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/grainDia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/grainDia"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/sedDia" />
+
+    <TextView
+        android:id="@+id/grainPhiTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainDia"
+        android:text="@string/grainPhi"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/grainPhi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/grainPhiTv" />
+
+    <TextView
+        android:id="@+id/gradeNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainPhi"
+        android:text="@string/grainName"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/grainNameSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/gradeNameTv" />
+
+    <TextView
+        android:id="@+id/grainMineralsTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainNameSpn"
+        android:text="@string/grainMinerals"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/grainLithicsTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grianMineralsEt"
+        android:text="@string/grainLithics"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<EditText
+        android:id="@+id/grainLithicsEt"
+        style="@style/geo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainLithicsTv"
+        android:ems="10"
+        android:hint="@string/grainLithics" />    
+
+	
+    <TextView
+        android:id="@+id/grainSortTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainLithicsEt"
+        android:text="@string/grainSorting"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/grainSortSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/grainSortTv" />
+    	
+    <TextView
+        android:id="@+id/grainRoundTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainSortSpn"
+        android:text="@string/grainRounding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/grainRoundSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+		style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/grainRoundTv" />
+    
+    <TextView
+        android:id="@+id/sedBeddingTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainRoundSpn"
+        android:text="@string/sedBedding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/sedBeddingSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	    style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/sedBeddingTv" />
+        
+    <EditText
+        android:id="@+id/grianMineralsEt"
+        style="@style/geo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/grainMineralsTv"
+        android:ems="10"
+        android:hint="@string/grainMinerals" />
+
+    <TextView
+        android:id="@+id/beddingStrikeTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sedBeddingSpn"
+        android:text="@string/bedStrike"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<EditText
+        android:id="@+id/beddingStrikeEt"
+        style="@style/geo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/beddingStrikeTv"
+        android:ems="10"
+        android:hint="@string/bedStrike" />    
+
+    <TextView
+        android:id="@+id/beddingDipTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/beddingStrikeEt"
+        android:text="@string/bedDip"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<EditText
+        android:id="@+id/beddingDipEt"
+        style="@style/geo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/beddingDipTv"
+        android:ems="10"
+        android:hint="@string/bedDip" />    	
+    <TextView
+        android:id="@+id/crossBeddingTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/beddingDipEt"
+        android:text="@string/corssBedding"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/crossBeddingSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/crossBeddingTv" />
+  
+    <TextView
+        android:id="@+id/rippleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/crossBeddingSpn"
+        android:text="@string/sedRiplles"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/rippleSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+		style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/rippleTv" />
+
+  
+    <TextView
+        android:id="@+id/soleMarksTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/rippleSpn"
+        android:text="@string/sedSoleMarks"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/soleMarksSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/soleMarksTv" />	
+  
+    <TextView
+        android:id="@+id/sedSSDTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/soleMarksSpn"
+        android:text="@string/sedSSD"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/sedSsdSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/sedSSDTv" />
+	
+
+    <TextView
+        android:id="@+id/sedStructTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sedSsdSpn"
+        android:text="@string/sedStruct"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<EditText
+        android:id="@+id/sedStructEt"
+        style="@style/geo_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sedStructTv"
+        android:ems="10"
+        android:hint="@string/sedStruct" />    	
+
+  
+    <TextView
+        android:id="@+id/sedFossilsTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sedStructEt"
+        android:text="@string/sedFossils"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/sedFossilsSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/sedFossilsTv" />
+
+    <TextView
+        android:id="@+id/sedDepEnvTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sedFossilsSpn"
+        android:text="@string/sedDepEnv"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<Spinner
+        android:id="@+id/sedDepSpn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+	style="@android:style/Widget.Spinner" 
+        android:layout_below="@+id/sedDepEnvTv" />    	
+
+	<ImageButton
+	    android:id="@+id/doneBtn"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/sedDepSpn"
+	    android:contentDescription="@string/done"	    
+        android:background="#0000"
+	    android:src="@drawable/ic_done" />
+			
+	</RelativeLayout>            
+    </LinearLayout>
+</ScrollView>

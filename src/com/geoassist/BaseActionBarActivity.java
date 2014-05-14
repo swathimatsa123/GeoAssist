@@ -7,10 +7,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.geoassist.data.Project;
 import com.geoassist.data.ProjectReport;
@@ -25,20 +26,38 @@ public class BaseActionBarActivity extends ActionBarActivity {
 
 		public void startSettings( ){
 			Intent intnt = new Intent(this, SettingsActivity.class);
-			Log.e("Intent ", "Started");
 			startActivityForResult(intnt, START_SETTINGS_ACTIVITY);
 			overridePendingTransition(R.anim.right_in, R.anim.left_out);
 			return;
 		}
 		
-		public void saveProject ( Project project){
+		public boolean isNumber(String str) {
+			try { 
+		        Integer.parseInt(str); 
+		    } catch(NumberFormatException e) { 
+		        return false; 
+		    }
+		    return true;
+		}
+
+		public Spinner setSpinner (int id,  final String[] types) {
+			Spinner spn = (Spinner)  findViewById(id);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
+										android.R.layout.simple_dropdown_item_1line,
+										types);
+			spn.setAdapter(adapter);
+			return spn;
+		}
+
+
+		public void saveProject ( WorkingProject project){
 			ProjectReport rp = new ProjectReport();
 			rp.save(project);
-//			sendReport(rp.getFileName(), project);
+			sendReport(rp.getFileName(), project);
 			return;
 		}
 		
-		public void sendReport(String fileName, Project  proj) {
+		public void sendReport(String fileName, WorkingProject  proj) {
 		    Uri attachment = Uri.fromFile(new File(fileName));
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("application/pdf");
@@ -116,6 +135,24 @@ public class BaseActionBarActivity extends ActionBarActivity {
 			 AlertDialog alertDialog = alertDialogBuilder.create();
 			 // show alert
 			 alertDialog.show();
+		}
+
+		public String getTextFromEt(int etId) {
+			EditText et = (EditText)findViewById(etId);
+			String ret = "";
+			if (et != null) {
+				ret = et.getText().toString();
+			}
+			return ret;
+		}
+
+		public String getTextFromSpinner(int spnId) {
+			Spinner spn= (Spinner)findViewById(spnId);
+			String ret = "";
+			if (spn != null) {
+				ret = spn.getSelectedItem().toString();
+			}
+			return ret;
 		}
 		
 }

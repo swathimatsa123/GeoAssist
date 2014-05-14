@@ -6,13 +6,15 @@
 
 	<EditText
 	    android:id="@+id/notes"
+	    style="@style/geo_edit_text"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_above="@+id/doneBtn"
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentRight="true"
 	    android:layout_below="@+id/notesTv"
 	    android:ems="10"
+	    android:lines="4"
+	    android:hint="@string/notes"
 	    android:inputType="textMultiLine|textCapSentences" />
 
 	<TextView
@@ -22,16 +24,19 @@
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentRight="true"
 	    android:layout_alignParentTop="true"
-	    android:layout_marginTop="19dp"
+	    android:layout_marginTop="19dp"			        
+	    android:textAppearance="?android:attr/textAppearanceLarge" 
 	    android:text="@string/addNotes" />
 
 	<ImageButton
 	    android:id="@+id/doneBtn"
+	    android:contentDescription="@string/done"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentBottom="true"
 	    android:layout_alignParentRight="true"
-	    android:layout_marginRight="32dp"
+	    android:layout_below="@+id/notes"
+        android:background="#0000"
+	    android:layout_marginRight="24dp"
 	    android:src="@drawable/ic_done" />
     
 </RelativeLayout>

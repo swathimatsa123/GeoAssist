@@ -102,6 +102,7 @@
   	    android:layout_height="wrap_content"
 		android:layout_alignBottom="@+id/grainFormTitle"
         android:layout_toRightOf="@+id/grainFormTitle"
+        style="@android:style/Widget.Spinner" 
         android:layout_alignParentRight="true"/>
 
     <EditText
@@ -125,6 +126,7 @@
   	    android:layout_height="wrap_content"
 		android:layout_alignBottom="@+id/grainShapeTitle"
         android:layout_toRightOf="@+id/grainShapeTitle"
+   	    style="@android:style/Widget.Spinner" 
         android:layout_alignParentRight="true"/>
 
   	<EditText
@@ -148,6 +150,7 @@
   	    android:layout_height="wrap_content"
 		android:layout_alignBottom="@+id/grainPrimaryTitle"
         android:layout_toRightOf="@+id/grainPrimaryTitle"
+   	    style="@android:style/Widget.Spinner" 
         android:layout_alignParentRight="true"/>
   	<EditText
   	    android:id="@+id/grainSecondaryTitle"
@@ -170,6 +173,7 @@
   	    android:layout_height="wrap_content"
 		android:layout_alignBottom="@+id/grainSecondaryTitle"
         android:layout_toRightOf="@+id/grainSecondaryTitle"
+   	    style="@android:style/Widget.Spinner" 
         android:layout_alignParentRight="true"/>
   
   	<ImageButton

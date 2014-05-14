@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageButton
+        android:id="@+id/add"
+        android:contentDescription="@string/addMinerals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#0000"
+        android:src="@drawable/ic_plus" />
+
+    <ImageButton
+        android:id="@+id/done"
+        android:contentDescription="@string/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#0000"
+        android:src="@drawable/ic_done" />
+
+    <ImageButton
+        android:id="@+id/cancel"
+        android:contentDescription="@string/action_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/done"
+        android:background="#0000"
+        android:src="@drawable/ic_cancel" />
+
+</RelativeLayout>

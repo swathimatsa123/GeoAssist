@@ -12,8 +12,10 @@
     <string name="title_activity_new_project">Project</string>
     <string name="rockTypeTxt">Rock Type</string>
     <string name="strcTypeTxt">Structure Type</string>
-
-    <string-array name="rockType_array">
+	<string name="lineation">Lineation Trend</string>
+	<string name="plunge">Foliation Plunge</string>
+	
+	<string-array name="rockType_array">
         <item>Select Type</item>
         <item>Igneous </item>
         <item>Metamorphic </item>
@@ -30,7 +32,7 @@
         <item>Select Type</item>
         <item>Anhedral </item>
         <item>Subhedral </item>
-        <item>Suhedral</item>
+        <item>Euhedral</item>
     </string-array>
     <string-array name="grainShape_array">
         <item>Select Type</item>
@@ -54,6 +56,7 @@
         <item>Deuteric alteration</item>
         <item>Chemical weathering</item>
     </string-array>
+
     <string name="grainSizeTxt">Grain Size</string>
     <string name="grainSizeMinTxt">Min Grain Size</string>
     <string name="grainSizeMaxTxt">Max Grain Size</string>
@@ -64,27 +67,28 @@
     <string name="grainShapeTitleTxt">Grain Shape</string>
     <string name="grainPrimaryTitleTxt">Primary</string>
     <string name="grainSecondaryTitleTxt">Secondary</string>
-    <string name="title_activity_user_details">New Project</string>
-    <string name="usrNameTv">Scientist Name :</string>
-    <string name="prjNameTv">Project Name :</string>
-    <string name="lcnTv">Location     :</string>
+    <string name="title_activity_new_site">New Site</string>
+    <string name="usrNameTv">Scientist Name </string>
+    <string name="prjNameTv">Project Name </string>
+    <string name="lcnTv">Location     </string>
     <string name="contact">Contact</string>
-    <string name="mineralName">Mineral Name :</string>
-    <string name="grainSize">Grain Size :</string>
-    <string name="minGrainSize">Min Grain Size :</string>
-    <string name="maxGrainSize">Max Grain Size :</string>
-    <string name="composition">Composition :</string>
-    <string name="cleavege">Cleavege :</string>
+    <string name="contact1">Contact #1</string>
+    <string name="contact2">Contact #2</string>
+    <string name="mineralName">Mineral Name </string>
+    <string name="grainSize">Grain Size </string>
+    <string name="minGrainSize">Min Grain Size </string>
+    <string name="maxGrainSize">Max Grain Size </string>
+    <string name="composition">Composition </string>
+    <string name="cleavege">Cleavege </string>
     <string name="addMinerals">Add Minerals</string>
-    <string name="rockNameTxt">Rock  :</string>
-    <string name="ignRockNameTxt">Rock  Name :</string>
-    <string name="strikeTxt">Strike :</string>
-    <string name="dipTxt">   Dip    :</string>
+    <string name="rockNameTxt">Rock  </string>
+    <string name="ignRockNameTxt">Rock  Name </string>
+    <string name="strikeTxt">Strike </string>
+    <string name="dipTxt">   Dip    </string>
     <string name="attitude">Attitude</string>
     <string name="title_activity_notes">Notes </string>
     <string name="sedStructures">Sediment Structures</string>
     <string name="notes">Notes</string>
-    <string name="title_activity_settings">Settings</string>
     <string name="nameEt">User Name</string>
     <string name="mailEt">E-mail To</string>
     <string name="emailTV">E-mail To</string>
@@ -102,19 +106,20 @@
     <string name="fileName">Project Name</string>
     <string name="projName">Project Name</string>
     <string name="contactHint">Unit in contact</string>
-    <string name="contactType">Type</string>
+    <string name="contactType">Contact Type</string>
     <string name="contactBoundary">Boundary</string>
     <string name="siteNum">Site #</string>
-    <string name="foldType">Fold Type</string>
+    <string name="foldType">Fold Type  </string>
+    <string name="foldClass">Ramsays Class </string>
     <string name="hingeLineTrend">Hinge Line Trend</string>
     <string name="hingeLinePlunge">Hinge Line Plunge</string>
     <string name="limbAngle">Interlimb Angle</string>
-    <string name="tightNess">Tightness</string>
-    <string name="hinge">Hinge</string>
-    <string name="limbs">Limbs</string>
-    <string name="lambda">Lambda</string>
-    <string name="amplitude">Amplitude</string>
-    <string name="secondOrder">2nd Order</string>
+    <string name="tightNess">Tightness </string>
+    <string name="hinge">Hinge </string>
+    <string name="limbs">Limbs </string>
+    <string name="lambda">Lambda </string>
+    <string name="amplitude">Amplitude </string>
+    <string name="secondOrder">2nd Order </string>
     <string name="symmetry">Symmetry</string>
     <string name="moveMent">Movement</string>
     <string name="trend">Trend</string>
@@ -128,5 +133,33 @@
     <string name="spacing">Spacing</string>
     <string name="beddingType">Bedding Type</string>
     <string name="zoneWidth">Zone Width</string>
+    <string name="title_activity_mineral_view">MineralView</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_mineral">AddMineralActivity</string>
+    <string name="title_activity_add_contact">AddContact</string>
+    <string name="title_activity_contact_main">ContactMain</string>
+    <string name="title_activity_fold_main">FoldMain</string>
+    <string name="rockUnit">Rock Unit</string>
+    <string name="title_activity_rock_details">RockDetails</string>
+    <string name="title_activity_dike_activiry">DikeActiviry</string>
+    <string name="grainDia">Grain Dia</string>
+    <string name="grainPhi">Grain Phi</string>
+    <string name="grainGrade">Grain Grade</string>
+    <string name="grainName">Grain Name</string>
+    <string name="grainMinerals">Grain Minerals</string>
+    <string name="grainLithics">Grain Lithics</string>
+    <string name="grainSorting">Grain Sorting</string>
+    <string name="grainRounding">Grain Rounding</string>
+    <string name="sedBedding">Bedding</string>
+    <string name="bedStrike">Bedding Strike</string>
+    <string name="bedDip">Bedding Dip</string>
+    <string name="corssBedding">Cross Bedding</string>
+    <string name="sedRiplles">Ripples</string>
+    <string name="sedSoleMarks">Sole Marks</string>
+    <string name="sedSSD">Sediment SSD</string>
+    <string name="sedStruct">Sediment Other Structures</string>
+    <string name="sedFossils">Sediment Fossils</string>
+    <string name="sedDepEnv">Sediment Dep Env</string>
+    <string name="title_activity_metmorphic_addition">MetmorphicAddition</string>
 
 </resources>

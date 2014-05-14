@@ -9,10 +9,11 @@ public class WorkingProject {
 	public  String			location;
 	public  String			mapFile;
 	public  String []		notes;
-	public 	int 			rockType;
-	public  int             rockName;
+//	public 	String          rockType;
+//	public  String          rockName;
+//	public  String          rockUnit;
 	public 	StructureType	structType;
-	public ArrayList<Site>   sites;
+	public ArrayList<Site>  sites;
 	
     private WorkingProject(){
     	sites = new ArrayList<Site>();

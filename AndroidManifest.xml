@@ -51,8 +51,8 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.geoassist.UserDetails"
-            android:label="@string/title_activity_user_details"
+            android:name="com.geoassist.AddSiteActivity"
+            android:label="@string/title_activity_new_site"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
@@ -68,8 +68,50 @@
         </activity>
         <activity
             android:name="com.geoassist.MainMap"
+            android:label="@string/title_activity_main_map"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.MineralMain"
+            android:label="@string/title_activity_mineral_view"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.AddMineralActivity"
+            android:label="@string/title_activity_add_mineral"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.AddContactActivity"
+            android:label="@string/title_activity_add_contact"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.ContactMain"
+            android:label="@string/title_activity_contact_main"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.FoldMain"
+            android:label="@string/title_activity_fold_main"
+            android:parentActivityName="com.geoassist.BaseActionBarActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.RockDetails"
+            android:label="@string/title_activity_rock_details"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_main_map" >
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.geoassist.MetamorphicActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_dike_activiry" >
+        </activity>
+        <activity
+            android:name="com.geoassist.MetmorphicAddition"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_metmorphic_addition" >
         </activity>
     </application>
 

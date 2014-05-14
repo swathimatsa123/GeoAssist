@@ -1,100 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-   <TextView
-        android:id="@+id/strike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
-        android:text="@string/strikeTxt"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    android:layout_height="match_parent" 
+     android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/strikeEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:ems="5"
-        android:inputType="number" >
-    </EditText>
 
-    <TextView
-        android:id="@+id/dip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/strike"
-        android:layout_marginTop="21dp"
-        android:text="@string/dipTxt"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+	<LinearLayout 
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/dipEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/dip"
-        android:layout_alignLeft="@+id/strikeEt"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="number" />
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" >
+			<TextView
+		        android:id="@+id/strike"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_alignParentTop="true"
+		        android:layout_marginTop="14dp"
+		        android:text="@string/strikeTxt"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <TextView
+		        android:id="@+id/dip"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/strikeEt"
+		        android:layout_marginTop="21dp"
+		        android:text="@string/dipTxt"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		    <EditText
+		        android:id="@+id/dipEt"
+		        android:layout_width="fill_parent"
+		        style="@style/geo_edit_text"
+		        android:layout_height="50dp"
+		        android:layout_below="@+id/dip"
+		        android:hint="@string/dipTxt"
+		        android:inputType="number" />
+		
+		  	<TextView
+		          android:id="@+id/zoneWidth"
+		          android:layout_width="fill_parent"
+		          android:layout_height="wrap_content"
+		          android:layout_alignParentLeft="true"
+		          android:layout_below="@+id/dipEt"
+		          android:layout_marginTop="15dp"
+		          android:text="@string/zoneWidth"
+		          android:textAppearance="?android:attr/textAppearanceMedium" />
+		
+		      <EditText
+		          android:id="@+id/zoneWidthEt"
+		          android:layout_width="fill_parent"
+		      	  style="@style/geo_edit_text"
+			      android:layout_height="50dp"
+			      android:layout_toLeftOf="@+id/units"
+		          android:layout_below="@+id/zoneWidth"
+		          android:hint="@string/zoneWidth"
+		          android:inputType="number" >
+		      </EditText>
 
-      <TextView
-          android:id="@+id/zoneWidth"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_below="@+id/dip"
-          android:layout_marginTop="15dp"
-          android:text="@string/zoneWidth"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
+			  <Spinner
+			      android:id="@+id/units"
+			      style="@android:style/Widget.Spinner"
+			      android:layout_width="160dp"
+			      android:layout_height="wrap_content"
+			      android:layout_alignBottom="@+id/zoneWidthEt"
+			      android:layout_alignParentRight="true"
+			      android:layout_alignTop="@+id/zoneWidthEt" />
+	
+			<TextView
+	          android:id="@+id/composition"
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:layout_alignParentLeft="true"
+	          android:layout_below="@+id/zoneWidthEt"
+	          android:layout_marginTop="18dp"
+	          android:text="@string/composition"
+	          android:textAppearance="?android:attr/textAppearanceMedium" />
+	      <EditText
+	          android:id="@+id/compositionEt"
+	          android:layout_width="fill_parent"
+	      	  style="@style/geo_edit_text"
+		      android:layout_height="50dp"
+	          android:layout_below="@+id/composition"
+	          android:layout_toLeftOf="@+id/compositionSpn"
+	          android:hint="@string/compTitleTxt"
+	          android:inputType="number" >
+	      </EditText>
 
-      <EditText
-          android:id="@+id/zoneWidthEt"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignBottom="@+id/zoneWidth"
-          android:layout_toLeftOf="@+id/dipEt"
-          android:layout_toRightOf="@+id/zoneWidth"
-          android:ems="10"
-          android:inputType="number" >
-      </EditText>
+	      	<Spinner
+	      	    android:id="@+id/compositionSpn"
+	      	    style="@android:style/Widget.Spinner"
+	      	    android:layout_width="160dp"
+	      	    android:layout_height="wrap_content"
+	      	    android:layout_alignBottom="@+id/compositionEt"
+	      	    android:layout_alignParentRight="true"
+	      	    android:layout_alignTop="@+id/compositionEt" />
 
-      <Spinner
-          android:id="@+id/units"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignBottom="@+id/zoneWidthEt"
-          android:layout_alignLeft="@+id/dipEt" />
-
-      <TextView
-          android:id="@+id/composition"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_below="@+id/zoneWidth"
-          android:layout_marginTop="18dp"
-          android:text="@string/composition"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
-
-      <Spinner
-          android:id="@+id/compositionSpn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignBottom="@+id/composition"
-          android:layout_alignLeft="@+id/units" />
-
-      <ImageButton
-          android:id="@+id/doneBtn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_below="@+id/composition"
-          android:background="#0000"
-          android:contentDescription="@string/done"
-          android:src="@drawable/ic_done" />
-
-</RelativeLayout>
+	      	<EditText
+	      	    android:id="@+id/strikeEt"
+	      	    android:layout_width="fill_parent"
+	      	    style="@style/geo_edit_text"
+		        android:layout_height="50dp"
+		        android:hint="@string/strikeTxt"
+	      	    android:layout_alignParentLeft="true"
+	      	    android:layout_below="@+id/strike"
+	      	    android:ems="5"
+	      	    android:inputType="number" />
+			<ImageButton
+		        android:id="@+id/doneBtn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/compositionEt"
+		        android:layout_marginTop="29dp"
+		        android:background="#0000"
+		        android:contentDescription="@string/done"
+		        android:src="@drawable/ic_done" />				  	  	      			    			    
+		</RelativeLayout>
+            
+    </LinearLayout>
+</ScrollView>
+		    

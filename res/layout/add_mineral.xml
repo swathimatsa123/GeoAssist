@@ -1,171 +1,156 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".IgneousMineralDel" >
+    android:layout_height="match_parent" 
+     android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/mineralNameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="21dp"
-        android:text="@string/mineralName"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/mineralNameEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/mineralNameTv"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/mineralNameTv"
-        android:ems="10"
-        android:hint="@string/mineralName" />
-    
-    <TextView
-        android:id="@+id/minGrainSizeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mineralNameTv"
-        android:layout_below="@+id/mineralNameTv"
-        android:layout_marginTop="24dp"
-        android:text="@string/minGrainSize"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+	<LinearLayout 
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/minGrainSizeEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/minGrainSizeTv"
-        android:layout_alignLeft="@+id/mineralNameEt"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:hint="@string/minGrainSize"
-        android:inputType="number" />
+		<RelativeLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/maxGrainSizeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/minGrainSizeTv"
-        android:layout_below="@+id/minGrainSizeTv"
-        android:layout_marginTop="34dp"
-        android:text="@string/maxGrainSize"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <TextView
+		        android:id="@+id/mineralNameTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_alignParentTop="true"
+		        android:text="@string/mineralName"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    
 
-    <EditText
-        android:id="@+id/maxGrainSizeEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/maxGrainSizeTv"
-        android:layout_alignRight="@+id/minGrainSizeEt"
-        android:layout_toRightOf="@+id/mineralNameTv"
-        android:ems="10"
-        android:hint="@string/maxGrainSize"
-        android:inputType="number" >
+		    <EditText
+		        android:id="@+id/mineralNameEt"
+		        style="@style/geo_edit_text"
+				android:lines="2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/mineralNameTv"
+		        android:layout_alignParentLeft="true"
+		        android:ems="10"
+		        android:hint="@string/mineralName" />
 
-    </EditText>
+		    <TextView
+		        android:id="@+id/maxGrainSizeTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/minGrainSizeTv"
+		        android:layout_below="@+id/minGrainSizeEt"
+		        android:text="@string/maxGrainSize"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/compositionTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/maxGrainSizeTv"
-        android:layout_below="@+id/maxGrainSizeTv"
-        android:layout_marginTop="27dp"
-        android:text="@string/compTitleTxt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <EditText
+		        android:id="@+id/maxGrainSizeEt"
+		        style="@style/geo_edit_text"
+				android:lines="2"
+				android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/maxGrainSizeTv"
+		        android:ems="10"
+		        android:hint="@string/maxGrainSize"
+		        android:inputType="number" />
 
-    <EditText
-        android:id="@+id/compositionEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/compositionTv"
-        android:layout_toRightOf="@+id/mineralNameTv"
-        android:ems="10"
-        android:inputType="number"  >
+		    <EditText
+		        android:id="@+id/compositionEt"
+		        style="@style/geo_edit_text"
+				android:lines="2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/compositionTv"
+		        android:ems="10"
+		        android:inputType="number" />
 
-    </EditText>
+		    <TextView
+		        android:id="@+id/cleavegeTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/compositionEt"
+		        android:text="@string/cleavege"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/cleavegeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/compositionTv"
-        android:layout_below="@+id/compositionTv"
-        android:layout_marginTop="27dp"
-        android:text="@string/cleavege"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Spinner
-        android:id="@+id/grainFormSpn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/grainFormTv"
-        android:layout_alignLeft="@+id/mineralNameEt"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/mineralCleavegeEt" />
+		    <EditText
+		        android:id="@+id/mineralCleavegeEt"
+		        style="@style/geo_edit_text"
+				android:lines="2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/cleavegeTv"
+		        android:hint="@string/cleavege"
+		        android:inputType="text"
+		        android:ems="10" />
+		    
+		    <TextView
+		        android:id="@+id/grainShapeTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/grainFormSpn"
+		        android:layout_alignParentLeft="true"
+		        android:text="@string/grainShapeTitleTxt"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Spinner
-        android:id="@+id/grainShapeSpn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/grainShapeTv"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/minGrainSizeTv" />
+		    <Spinner
+		        android:id="@+id/grainShapeSpn"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/grainShapeTv"
+			 	style="@android:style/Widget.Spinner" 
+		        android:layout_alignParentLeft="true" />
 
-    <EditText
-        android:id="@+id/mineralCleavegeEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/cleavegeTv"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/minGrainSizeTv"
-        android:ems="10" />
+		    <TextView
+		        android:id="@+id/grainFormTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/mineralCleavegeEt"
+		        android:layout_alignParentLeft="true"
+		        android:text="@string/grainFormTitleTxt"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/grainShapeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/cleavegeTv"
-        android:layout_below="@+id/grainFormTv"
-        android:layout_marginTop="16dp"
-        android:text="@string/grainShapeTitleTxt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <Spinner
+		        android:id="@+id/grainFormSpn"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		      	style="@android:style/Widget.Spinner" 
+		        android:layout_below="@+id/grainFormTv" />
 
-    <TextView
-        android:id="@+id/grainFormTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/grainShapeTv"
-        android:layout_below="@+id/cleavegeTv"
-        android:layout_marginTop="14dp"
-        android:text="@string/grainFormTitleTxt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    <EditText
+		        android:id="@+id/minGrainSizeEt"
+		        style="@style/geo_edit_text"
+				android:lines="2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/minGrainSizeTv"
+		        android:ems="10"
+		        android:hint="@string/minGrainSize"
+		        android:inputType="number" >
+		    </EditText>
 
-    <ImageButton
-        android:id="@+id/mineralDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/grainShapeTv"
-        android:layout_below="@+id/grainShapeTv"
-        android:background="#0000"
-        android:src="@drawable/ic_done" />
+		    <TextView
+		        android:id="@+id/minGrainSizeTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/mineralNameEt"
+		        android:text="@string/minGrainSize"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageButton
-        android:id="@+id/addMineralsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/mineralDone"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/maxGrainSizeTv"
-        android:background="#0000"
-        android:src="@drawable/ic_plus" />
-
-</RelativeLayout>
+		    <TextView
+		        android:id="@+id/compositionTv"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+		        android:layout_below="@+id/maxGrainSizeEt"
+		        android:text="@string/compTitleTxt"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+		    
+		  </RelativeLayout>
+            
+    </LinearLayout>
+</ScrollView>
