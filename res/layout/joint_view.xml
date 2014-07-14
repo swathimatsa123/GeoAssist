@@ -1,118 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-     android:fillViewport="true">
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-	<LinearLayout 
-	    android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-		<RelativeLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent" >
-			<TextView
-			        android:id="@+id/strike"
-			        android:layout_width="fill_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_alignParentLeft="true"
-			        android:layout_alignParentTop="true"
-			        android:layout_marginTop="14dp"
-			        android:text="@string/strikeTxt"
-			        android:textAppearance="?android:attr/textAppearanceLarge" />
-		
-		    <EditText
-		        android:id="@+id/strikeEt"
-		        android:layout_width="fill_parent"
-		        style="@style/geo_edit_text"
-		        android:layout_height="50dp"
-		        android:layout_below="@+id/strike"
-		        android:inputType="number" >
-		    </EditText>
+            <fragment
+                android:id="@+id/strikeDipFrg"
+                android:name="com.geoassist.StrikeDipFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentLeft="true"
+                tools:layout="@layout/strike_dip_frg" />
 
-		    <TextView
-			        android:id="@+id/dip"
-			        android:layout_width="fill_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_below="@+id/strikeEt"
-			        android:layout_marginTop="21dp"
-			        android:text="@string/dipTxt"
-			        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/spacing"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/strikeDipFrg"
+                android:layout_marginTop="21dp"
+                android:text="@string/spacing"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-		    <EditText
-		        android:id="@+id/dipEt"
-		        android:layout_width="fill_parent"
-		        style="@style/geo_edit_text"
-		        android:layout_height="50dp"
-		        android:layout_alignParentLeft="true"
-		        android:layout_below="@+id/dip"
-		        android:ems="10"
-		        android:inputType="number" >
-		    </EditText>
-		    <TextView
-		        android:id="@+id/spacing"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_alignParentLeft="true"
-		        android:layout_below="@+id/dipEt"
-		        android:layout_marginTop="21dp"
-		        android:text="@string/spacing"
-		        android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-		    <EditText
-		        android:id="@+id/spacingEt"
-		        android:layout_width="fill_parent"
-		        style="@style/geo_edit_text"
-		        android:layout_height="50dp"
-		        android:layout_below="@+id/spacing"
-		        android:inputType="number" >
-		    </EditText>	    
+            <EditText
+                android:id="@+id/spacingEt"
+                style="@style/geo_edit_text"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/spacing"
+                android:inputType="number" >
+            </EditText>
 
-		    <TextView
-		        android:id="@+id/beddingType"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/spacingEt"
-		        android:layout_marginTop="22dp"
-		        android:text="@string/beddingType"
-		        android:textAppearance="?android:attr/textAppearanceLarge" />
-		
-		    <Spinner
-		        android:id="@+id/beddingSpn"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		   	style="@android:style/Widget.Spinner" 
-		        android:layout_below="@+id/beddingType"/>
-		
-		    <TextView
-		        android:id="@+id/foldType"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_below="@+id/beddingSpn"
-		        android:layout_marginTop="16dp"
-		        android:text="@string/foldType"
-		        android:textAppearance="?android:attr/textAppearanceLarge" />
-		
-		    <Spinner
-		        android:id="@+id/foldTypeSpn"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		   		style="@android:style/Widget.Spinner" 
-		        android:layout_below="@+id/foldType"/>
+            <TextView
+                android:id="@+id/beddingType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spacingEt"
+                android:layout_marginTop="22dp"
+                android:text="@string/beddingType"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-		    <ImageButton
-		        android:id="@+id/doneBtn"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_alignParentRight="true"
-		        android:layout_below="@+id/foldTypeSpn"
-		        android:background="#0000"
-		        android:contentDescription="@string/done"
-		        android:src="@drawable/ic_done" />
-				    				    		    				    
-			</RelativeLayout>
+            <Spinner
+                android:id="@+id/beddingSpn"
+                style="@android:style/Widget.Spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/beddingType" />
+
+            <TextView
+                android:id="@+id/foldType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/beddingSpn"
+                android:layout_marginTop="16dp"
+                android:text="@string/foldType"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/foldTypeSpn"
+                style="@android:style/Widget.Spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/foldType" />
+
+            <ImageButton
+                android:id="@+id/doneBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/foldTypeSpn"
+                android:background="#0000"
+                android:contentDescription="@string/done"
+                android:src="@drawable/ic_done" />
+        </RelativeLayout>
     </LinearLayout>
+
 </ScrollView>
-		    

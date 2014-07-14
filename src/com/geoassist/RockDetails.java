@@ -53,9 +53,12 @@ public class RockDetails extends BaseListActivity implements OnClickListener, On
 		else if (site.rockType.equals("Sedimentary")) {
 			groupItem.add("Sedimentary");
 		}
-		else if (site.rockType.equals("Metamorphic")) {
-			groupItem.add("Metamorphic");
-		}
+//		else if (site.rockType.equals("Metamorphic")) {
+//			groupItem.add("Metamorphic");
+//		}
+		else if (site.rockType.equals("Foliation/Lineation")) {
+			groupItem.add("Foliation/Lineation");
+		}		
 		groupItem.add("Notes");
 		for (int i = 0; i<groupItem.size(); i++) {
 			ArrayList<String> child = new ArrayList<String>();
@@ -114,7 +117,7 @@ public class RockDetails extends BaseListActivity implements OnClickListener, On
 				site.sedFossils = getTextFromSpinner(R.id.sedFossilsSpn);	
 				site.sedDepEnv= getTextFromSpinner(R.id.sedDepSpn);							
 			}
-			else if (site.rockType.equals("Metamorphic")) {
+			else if (site.rockType.equals("Foliation/Lineation")) {
 			}
 			break;
 		case 2:
@@ -162,7 +165,7 @@ public class RockDetails extends BaseListActivity implements OnClickListener, On
 		else if (site.rockType.equals("Sedimentary")) {
 			return R.layout.sed_info;
 		}
-		else if (site.rockType.equals("Metamorphic")) {
+		else if (site.rockType.equals("Foliation/Lineation")) {
 			return R.layout.met_dtls_add;		
 		}
 		return R.layout.dike_info;		

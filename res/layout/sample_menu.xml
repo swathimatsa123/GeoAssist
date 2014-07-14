@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:background="#0000"
+        android:contentDescription="@string/done"
         android:src="@drawable/ic_done" />
 
     <ImageButton
@@ -19,14 +20,16 @@
         android:layout_alignTop="@+id/done"
         android:layout_toRightOf="@+id/done"
         android:background="#0000"
+        android:contentDescription="@string/action_cancel"
         android:src="@drawable/ic_cancel" />
     <ImageButton
         android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/report"
+        android:layout_alignTop="@+id/compass"
         android:background="#0000"
+        android:contentDescription="@string/action_settings"
         android:src="@drawable/ic_main_settings" />
 
     <ImageButton
@@ -36,15 +39,17 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/settings"
         android:background="#0000"
+        android:contentDescription="@string/notes"
         android:src="@drawable/ic_notes" />
 
     <ImageButton
-        android:id="@+id/report"
+        android:id="@+id/compass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/perSampleNotes"
         android:background="#0000"
+        android:contentDescription="@string/action_report"
         android:src="@drawable/ic_compass" />
 
     <ImageButton
@@ -52,8 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/report"
+        android:layout_toLeftOf="@+id/compass"
         android:background="#0000"
+        android:contentDescription="@string/title_activity_new_site"
         android:src="@drawable/ic_camera" />
 
 </RelativeLayout>

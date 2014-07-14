@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<Spinner
+    android:id="@+id/projNameSpn"
+    style="@android:style/Widget.Spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="11dp" />
+
+<ImageButton
+    android:id="@+id/doneBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_below="@+id/projNameSpn"
+    android:layout_marginLeft="56dp"
+    android:layout_marginTop="31dp"
+    android:background="#0000"
+    android:contentDescription="@string/done"
+    android:src="@drawable/ic_done" />
+
+<ImageButton
+    android:id="@+id/cancelBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/doneBtn"
+    android:layout_marginLeft="64dp"
+    android:layout_toRightOf="@+id/doneBtn"
+    android:background="#0000"
+    android:contentDescription="@string/action_cancel"
+    android:src="@drawable/ic_cancel" />
+
+</RelativeLayout>

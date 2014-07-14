@@ -8,67 +8,76 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AddSiteActivity" >
 
+    <EditText
+        android:id="@+id/settingUsrNameEt"
+        style="@style/geo_edit_text"
+        android:layout_width="wrap_content"
+		android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/nameTV"
+        android:ems="10"
+	    android:hint="@string/nameEt"
+	    android:inputType="textPersonName" >
+        <requestFocus />
+    </EditText>
+
     <TextView
         android:id="@+id/nameTV"
+        style="@android:style/TextAppearance.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/nameEt" 
-        style="@android:style/TextAppearance.Large"/>
+        android:layout_marginTop="50dp"
+        android:text="@string/nameEt" />
 
-    <EditText
-        android:id="@+id/settingUsrNameEt"
+    <TextView
+        android:id="@+id/toAddrTv"
+        style="@android:style/TextAppearance.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/nameTV"
-        android:layout_alignBottom="@+id/nameTV"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/ccAddrTv"
-        android:ems="10"
-        android:inputType="textPersonName" >
-    </EditText>
+        android:layout_alignLeft="@+id/settingUsrNameEt"
+        android:layout_below="@+id/settingUsrNameEt"
+        android:layout_marginTop="21dp"
+        android:text="@string/emailTV" />
 
     <EditText
         android:id="@+id/emailToEt"
+        style="@style/geo_edit_text"
+        android:lines="2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toAddrTv"
-        android:layout_alignLeft="@+id/settingUsrNameEt"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/emailccEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ccAddrTv"
+		android:layout_height="50dp"
+        android:layout_alignLeft="@+id/toAddrTv"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/ccAddrTv"
+        android:layout_below="@+id/toAddrTv"
         android:ems="10"
+        android:hint="@string/emailTV"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/ccAddrTv"
-        style="@android:style/TextAppearance.Large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/toAddrTv"
-        android:layout_below="@+id/toAddrTv"
-        android:layout_marginTop="16dp"
-        android:text="@string/emailCcTv" />
-
-    <TextView
-        android:id="@+id/toAddrTv"
-        style="@android:style/TextAppearance.Large"
+        style="@android:style/TextAppearance.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/nameTV"
-        android:layout_below="@+id/settingUsrNameEt"
+        android:layout_below="@+id/emailToEt"
+        android:layout_marginTop="29dp"
+        android:text="@string/emailCcTv" />
+
+    <EditText
+        android:id="@+id/emailccEt"
+        style="@style/geo_edit_text"
+        android:lines="2"
+        android:layout_width="wrap_content"
+		android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ccAddrTv"
         android:layout_marginTop="27dp"
-        android:text="@string/emailTV" />
+        android:ems="10"
+        android:hint="@string/emailCcTv"
+        android:inputType="textEmailAddress" />
     
 </RelativeLayout>
     

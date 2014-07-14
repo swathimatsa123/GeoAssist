@@ -1,79 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-     android:fillViewport="true">
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
 
-
-	<LinearLayout 
-	    android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
-	<RelativeLayout
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	>
-
-    <TextView
-        android:id="@+id/projLat"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lattitude"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-    <EditText
-        android:id="@+id/siteLatEt"
-    	style="@style/geo_edit_text"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/projLat"
-        android:ems="10"
-        android:inputType="number"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/longitude"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/siteLatEt"
-        android:text="@string/longitude"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/siteLngEt"
-        style="@style/geo_edit_text"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/longitude"
-        android:inputType="number"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/projLat"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lattitude"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/siteNum"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/siteLngEt"
-        android:text="@string/siteNum"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/siteLatEt"
+                style="@style/geo_edit_text"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/projLat"
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/siteNumEt"
-		style="@style/geo_edit_text"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/siteNum"
-        android:ems="10"
-        android:inputType="numberSigned" />
-	<ImageButton
-	    android:id="@+id/doneBtn"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentRight="true"
-	    android:layout_below="@+id/siteNumEt"
-	    android:background="#0000"
-	    android:contentDescription="@string/done"
-	    android:src="@drawable/ic_done" />    
-	</RelativeLayout>            
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/siteLatEt"
+                android:text="@string/longitude"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/siteLngEt"
+                style="@style/geo_edit_text"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/longitude"
+                android:inputType="number"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/siteNum"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/siteLngEt"
+                android:text="@string/siteNum"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/siteNumEt"
+                style="@style/geo_edit_text"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/siteNum"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <ImageButton
+                android:id="@+id/doneBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/siteNumEt"
+                android:background="#0000"
+                android:contentDescription="@string/done"
+                android:src="@drawable/ic_done" />
+        </RelativeLayout>
     </LinearLayout>
+
 </ScrollView>

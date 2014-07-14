@@ -7,14 +7,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.geoassist.data.GeoDb;
 import com.geoassist.data.Project;
 import com.geoassist.data.ProjectReport;
+import com.geoassist.data.User;
 import com.geoassist.data.WorkingProject;
 
 
@@ -23,7 +26,7 @@ public class BaseActionBarActivity extends ActionBarActivity {
 		static final int START_MAP_ACTIVITY= 200;
 		static final int START_SETTINGS_ACTIVITY = 300;
 		Project 	currProject;
-
+		public GeoDb		db = null;
 		public void startSettings( ){
 			Intent intnt = new Intent(this, SettingsActivity.class);
 			startActivityForResult(intnt, START_SETTINGS_ACTIVITY);
@@ -62,7 +65,8 @@ public class BaseActionBarActivity extends ActionBarActivity {
 			Intent intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("application/pdf");
 			intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"matsa.swathi@gmail.com"});
-			intent.putExtra(Intent.EXTRA_SUBJECT, "Report from field exploration @" +proj.location);
+			User usr = User.getInstance();
+			intent.putExtra(Intent.EXTRA_SUBJECT, "Report from field exploration by " +usr.userName);
 			intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("Please find the attached report"));
 			intent.putExtra(Intent.EXTRA_STREAM, attachment);
 			startActivity(intent);
@@ -83,10 +87,6 @@ public class BaseActionBarActivity extends ActionBarActivity {
 			 alertDialogBuilder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog,int id) {
 						saveDialog();
-						// go to a new activity of the app
-//						Intent positveActivity = new Intent(getApplicationContext(),
-//	                            PositiveActivity.class);
-//			            startActivity(positveActivity);	
 					}
 				  });
 			 // set negative button: No message
@@ -122,6 +122,11 @@ public class BaseActionBarActivity extends ActionBarActivity {
 					public void onClick(DialogInterface dialog,int id) {
 						WorkingProject proj = WorkingProject.getInstance();
 						proj.name = projNameEt.getText().toString();
+						BaseActionBarActivity.this.db = GeoDb.getInstance(BaseActionBarActivity.this);
+						Log.e("DB Instance is ", String.valueOf(BaseActionBarActivity.this.db));
+						if (BaseActionBarActivity.this.db != null) {
+							BaseActionBarActivity.this.db.saveWorkingProject(proj);
+						}
 						BaseActionBarActivity.this.finish();
 					}
 				  });
@@ -154,6 +159,5 @@ public class BaseActionBarActivity extends ActionBarActivity {
 			}
 			return ret;
 		}
-		
 }
 

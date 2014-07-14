@@ -7,11 +7,9 @@ public class WorkingProject {
 	public  String 			scientistName;
 	public  String 			name;
 	public  String			location;
+	public  int				sitesCount;
 	public  String			mapFile;
 	public  String []		notes;
-//	public 	String          rockType;
-//	public  String          rockName;
-//	public  String          rockUnit;
 	public 	StructureType	structType;
 	public ArrayList<Site>  sites;
 	

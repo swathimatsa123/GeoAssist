@@ -61,7 +61,7 @@ public class MainExpdList  extends BaseExpandableListAdapter implements OnItemSe
 	EditText siteNumEt;
 	double  lat = 0;
 	double  lng = 0;
-	final String[] rockTypes = { "Select", "Igneous", "Metamorphic" ,"Sedimentary" };
+	final String[] rockTypes = { "Select", "Igneous", "Foliation/Lineation" ,"Sedimentary" };
 	final String[] contactTypes = { "Select", "Sharp", "Gradational", "Interbedding",
 									"Transition", "Undulating", "Non-conformable"};
 	

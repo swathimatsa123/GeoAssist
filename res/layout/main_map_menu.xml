@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <ImageButton
-        android:id="@+id/report"
+        android:id="@+id/compass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/newSite"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/report"
+        android:layout_alignTop="@+id/compass"
         android:background="#0000"
         android:src="@drawable/ic_main_settings" />
 
@@ -51,8 +51,8 @@
         android:id="@+id/mainMapSrc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/report"
+        android:layout_alignTop="@+id/compass"
         android:layout_toLeftOf="@+id/settings"
-        android:layout_toRightOf="@+id/report" />
+        android:layout_toRightOf="@+id/compass" />
 
 </RelativeLayout>

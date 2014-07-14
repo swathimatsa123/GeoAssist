@@ -36,8 +36,8 @@ public class Site {
 	public  String          sedFossils;
 	public  String          sedDepEnv;
 	
-	public  String          metStructure;
-	public 	StructureType	structType;
+//	public  String          metStructure;
+//	public 	StructureType	structType;
 	
 	public String 			foldType;
 	public String 			foldTighness;

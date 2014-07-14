@@ -28,6 +28,7 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	static final int START_MAP_ACTIVITY= 200;
 	static final int START_SETTINGS_ACTIVITY = 300;
 	static final int START_CAMERA_ACTIVITY = 400;
+	static final int START_COMPASS_ACTIVITY = 500;
     private File mediaFile=null;
 
 	WorkingProject workingProj = WorkingProject.getInstance();
@@ -45,7 +46,7 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 	    cancelBtn.setOnClickListener(this);
 	    ImageButton cameraBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.newSite);
 	    cameraBtn.setOnClickListener(this);
-	    ImageButton compassBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.report);
+	    ImageButton compassBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.compass);
 	    compassBtn.setOnClickListener(this);
 	    ImageButton notesBtn = (ImageButton)actionBar.getCustomView().findViewById(R.id.perSampleNotes);
 	    notesBtn.setOnClickListener(this);
@@ -201,8 +202,9 @@ public class BaseListActivity extends ExpandableListActivity implements OnClickL
 		    	Log.e("OPTION Notes" , "Selected");
 		    	break;
 	
-		    case R.id.report:
+		    case R.id.compass:
 		    	Log.e("OPTION Compass" , "Selected");
+		    	invokeActivity(CompassActivity.class, START_COMPASS_ACTIVITY);
 		    	break;
 		    
 		    case R.id.newSite:

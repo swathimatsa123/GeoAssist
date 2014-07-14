@@ -105,13 +105,17 @@
         </activity>
         <activity
             android:name="com.geoassist.MetamorphicActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_dike_activiry" >
+            android:label="@string/title_activity_dike_activiry"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.geoassist.MetmorphicAddition"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_metmorphic_addition" >
+            android:label="@string/title_activity_metmorphic_addition"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.geoassist.CompassActivity"
+            android:label="@string/title_activity_compass" >
         </activity>
     </application>
 

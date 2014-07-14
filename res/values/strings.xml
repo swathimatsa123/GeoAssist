@@ -12,10 +12,10 @@
     <string name="title_activity_new_project">Project</string>
     <string name="rockTypeTxt">Rock Type</string>
     <string name="strcTypeTxt">Structure Type</string>
-	<string name="lineation">Lineation Trend</string>
-	<string name="plunge">Foliation Plunge</string>
-	
-	<string-array name="rockType_array">
+    <string name="lineation">Lineation Trend</string>
+    <string name="plunge">Foliation Plunge</string>
+
+    <string-array name="rockType_array">
         <item>Select Type</item>
         <item>Igneous </item>
         <item>Metamorphic </item>
@@ -100,6 +100,7 @@
     <string name="mapFile">Map File</string>
     <string name="action_done">Done</string>
     <string name="action_cancel">Cancel</string>
+    <string name="action_report">Report</string>
     <string name="title_activity_main_map">MainMap</string>
     <string name="lattitude">Latitude</string>
     <string name="longitude">Longitude</string>
@@ -161,5 +162,6 @@
     <string name="sedFossils">Sediment Fossils</string>
     <string name="sedDepEnv">Sediment Dep Env</string>
     <string name="title_activity_metmorphic_addition">MetmorphicAddition</string>
+    <string name="title_activity_compass">CompassActivity</string>
 
 </resources>

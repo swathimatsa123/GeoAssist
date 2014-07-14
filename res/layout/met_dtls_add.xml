@@ -71,7 +71,7 @@
 	    android:ems="10"
 	    android:lines="2"
 	    android:hint="@string/lineation"
-	    android:inputType="text" />
+	    android:inputType="number" />
 
 	<TextView
 	    android:id="@+id/plungeTv"
@@ -91,7 +91,7 @@
 	    android:layout_below="@+id/plungeTv"
 	    android:ems="10"
 	    android:hint="@string/plunge"
-	    android:inputType="text"
+	    android:inputType="number"
 	    android:lines="2" />
 							
 </RelativeLayout>

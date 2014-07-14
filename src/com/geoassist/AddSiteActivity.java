@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -44,11 +43,14 @@ public class AddSiteActivity extends BaseListActivity implements OnClickListener
 	ArrayList<Object> childItem = new ArrayList<Object>();
 	public double latValue = 0;
 	public double longValue = 0;
+//	StrikeDip strdip = null; 
 	WorkingProject  proj = null;
 	Site			site = new Site();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		strdip = new StrikeDip(this) ;
+		
 		exList = getExpandableListView();
 		exList.setDividerHeight(2);
 		exList.setGroupIndicator(null);
@@ -93,6 +95,13 @@ public class AddSiteActivity extends BaseListActivity implements OnClickListener
 		proj.scientistName = usrName;
 		proj.sites.add(site); 
 		exList.setOnGroupClickListener(this);
+	}
+
+
+	@Override
+	protected void onResume() {
+//		strdip.start();
+		super.onResume();
 	}
 
 

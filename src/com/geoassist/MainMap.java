@@ -64,10 +64,9 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 	Boolean			projNamed = false;
 	ArrayList<String> mapFiles = new ArrayList<String>();
 	ArrayList<String> mapsWithPath = new ArrayList<String>();
-	final String[] rockTypes = {"All", "Igneous", "Metamorphic","Sedimentary" };
+	final String[] rockTypes = {"All", "Igneous", "Foliation/Lineation","Sedimentary" };
 	String			lyrFltr = rockTypes[0];
 	PlaceholderFragment mapFrag;
-	
 	double lat;
 	double lng;
 	@Override
@@ -85,7 +84,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		}
 	    saveBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.done);
 	    saveBtn.setOnClickListener(this);
-	    reportBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.report);
+	    reportBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.compass);
 	    reportBtn.setOnClickListener(this);
 
 	    cancelBtn    = (ImageButton)actionBar.getCustomView().findViewById(R.id.cancel);
@@ -148,9 +147,6 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 	            	mapFiles.add(listFile[i].getName());
 	            	mapsWithPath.add(Environment.getExternalStorageDirectory()+"/" +  dir.getName()+"/" +
 	            					listFile[i].getName());
-//	            	Log.e("Path", Environment.getExternalStorageDirectory()+"/" + 
-//	            					dir.getName()+"/" +
-//	            					listFile[i].getName());
 	            }
 	        }
 	    }    
@@ -162,6 +158,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			WorkingProject proj = WorkingProject.getInstance();
 			if (pos != 0) {
 				proj.mapFile = mapsWithPath.get(pos-1);
+				this.mapFrag.mapLayerAdded = false;
 				this.mapFrag.refreshMapView();
 			}
 		}
@@ -201,12 +198,13 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		private Marker 				myPosMarker;
 		private GoogleMap 			map;
 		private LocationClient 		locationclient;
-		public static final int 	MINUTE_IN_SECONDS = 60;
-		public static final int 	UPDATE_INTERVAL_IN_SECONDS = 60 *MINUTE_IN_SECONDS;
+		public static final int 	MINUTE_IN_SECONDS = 10;
+		public static final int 	UPDATE_INTERVAL_IN_SECONDS = 10 *MINUTE_IN_SECONDS;
 		public static final int 	UPDATE_INTERVAL_FASTEST_IN_SECONDS =  MINUTE_IN_SECONDS;
 		public double 				currentLat = 0;
 		public double 				currentLng = 0;
-		public LatLng 				myPos;    
+		public LatLng 				myPos;
+		boolean 	mapLayerAdded = false;
 		List<Marker> markerList = new ArrayList<Marker>();
 		public PlaceholderFragment() {
 		}
@@ -233,7 +231,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 
 		@Override
 		public void onLocationChanged(Location location) {
-		    currentLat = location.getLatitude();
+			currentLat = location.getLatitude();
 		    currentLng = location.getLongitude();
 		    refreshMapView();
 		}
@@ -247,7 +245,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			for (Marker marker: markerList) {
 				marker.remove();
 			}
-			markerList.clear();
+			if (markerList != null) markerList.clear();
 			WorkingProject proj = WorkingProject.getInstance();
 			if (map == null) {
 				SupportMapFragment supportMap = (SupportMapFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
@@ -256,14 +254,16 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 				if (map != null) {
 //						map.setMapType(GoogleMap.MAP_TYPE_NONE);
 						if (proj.mapFile != null) {
+							mapLayerAdded = true;
 							map.addTileOverlay(new TileOverlayOptions().tileProvider(new MBTileAdapter(proj.mapFile )));
 						}
 				    	map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
 				}
 			}
 			else {
-				if (proj.mapFile != null) {
+				if ((proj.mapFile != null)  && (mapLayerAdded == false)){
 					map.addTileOverlay(new TileOverlayOptions().tileProvider(new MBTileAdapter(proj.mapFile )));
+					mapLayerAdded = true;
 				}
 			}
 			BitmapDescriptor usrIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker);
@@ -311,8 +311,6 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 		}
 		@Override
 		public void onConnectionFailed(ConnectionResult arg0) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -336,7 +334,7 @@ public class MainMap extends BaseActionBarActivity  implements OnClickListener,
 			Log.e("Save", "Called");
 			this.saveDialog();
 			break;
-		case R.id.report:
+		case R.id.compass:
 			Log.e("Report", "Called");
 			saveProject(workingProj);
 			this.finish();
